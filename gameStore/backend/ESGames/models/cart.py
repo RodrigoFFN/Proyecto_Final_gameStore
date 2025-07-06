@@ -1,5 +1,5 @@
 from django.db import models
-from .user import User
+from .user_profile import UserProfile
 from .videogame import Videogame
 
 class Cart(models.Model):
