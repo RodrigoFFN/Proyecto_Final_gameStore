@@ -3,7 +3,7 @@ from .user_profile import UserProfile
 from .videogame import Videogame
 
 class Cart(models.Model):
-    user = models.OneToOneField(User, on_delete=models.CASCADE)
+    user = models.OneToOneField(UserProfile, on_delete=models.CASCADE)
     last_updated = models.DateTimeField(auto_now=True)
 
     def __str__(self):

@@ -1,9 +1,9 @@
 from django.db import models
-from .user import User
+from .user_profile import UserProfile
 from .videogame import Videogame
 
 class Rating(models.Model):
-    user = models.ForeignKey(User, on_delete=models.CASCADE)
+    user = models.ForeignKey(UserProfile, on_delete=models.CASCADE)
     videogame = models.ForeignKey(Videogame, on_delete=models.CASCADE)
     score = models.IntegerField()
     date = models.DateTimeField(auto_now_add=True)
