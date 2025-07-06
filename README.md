@@ -5,8 +5,11 @@ ESGames✨
 👨‍💻 Integrantes del Equipo
 
 -Fabricio Gabriel Jimenez Paredes
+
 -Mauricio Antonio Paredes Miranda
+
 -Mijael Paul León Ramos
+
 -Rodrigo Francisco Flores Nuñez
 
 <p align="center">
