@@ -1,12 +1,13 @@
 import sys
 import os
 
-# Ruta absoluta al backend
-sys.path.append(os.path.join(os.path.dirname(__file__), "../backend"))
+# Agregar el path del proyecto
+sys.path.append(os.path.join(os.path.dirname(__file__), "../.."))
 
-# Configuración Django
+# Configurar settings de Django
 os.environ.setdefault("DJANGO_SETTINGS_MODULE", "gameStore.settings")
 
-# WSGI
+# Importar la app WSGI
 from django.core.wsgi import get_wsgi_application
-application = get_wsgi_application()
+
+app = get_wsgi_application()
