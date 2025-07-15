@@ -1,5 +1,9 @@
 from django.urls import path, include
 from rest_framework.routers import DefaultRouter
+from rest_framework_simplejwt.views import (
+    TokenObtainPairView,
+    TokenRefreshView,
+)
 from .views import (
     CartViewSet, CartItemViewSet,
     CategoryViewSet, LibraryViewSet,
@@ -19,4 +23,9 @@ router.register(r'videogame', VideogameViewSet)
 
 urlpatterns = [
     path('', include(router.urls)),
+    
+    # Endpoints para JWT
+    path('token/', TokenObtainPairView.as_view(), name='token_obtain_pair'),
+    path('token/refresh/', TokenRefreshView.as_view(), name='token_refresh'),
 ]
+
