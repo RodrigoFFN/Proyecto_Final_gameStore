@@ -36,17 +36,12 @@ const register = async () => {
   error.value = ''
   success.value = false
   try {
-    await api.post('/api/register/', {
+    const response = await api.post('/api/register/', {
       username: username.value,
       email: email.value,
       password: password.value,
       address: address.value,
       phone: phone.value
-    })
-
-    const response = await api.post('/api/token/', {
-      username: username.value,
-      password: password.value
     })
 
     const { access, refresh } = response.data
