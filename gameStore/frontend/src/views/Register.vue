@@ -2,6 +2,7 @@
 import { ref } from 'vue'
 import axios from '@/api'
 import { useRouter } from 'vue-router'
+import api from '@/api'
 
 const router = useRouter()
 
