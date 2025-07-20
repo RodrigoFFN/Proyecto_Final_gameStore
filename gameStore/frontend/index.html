@@ -1,50 +1,13 @@
-<!DOCTYPE html>
-<html lang="es">
-<head>
-  <meta charset="UTF-8" />
-  <title>GameStore - Juegos</title>
-  <script src="https://cdn.tailwindcss.com"></script>
-</head>
-<body class="bg-gray-900 text-white min-h-screen">
-  <nav class="bg-gray-800 p-4 flex justify-between">
-    <h1 class="text-xl font-bold">🎮 GameStore</h1>
-    <button onclick="logout()" class="bg-red-600 px-4 py-1 rounded hover:bg-red-700">Salir</button>
-  </nav>
-
-  <main class="p-8">
-    <h2 class="text-2xl mb-4 font-semibold">Juegos Disponibles</h2>
-    <div id="gamesContainer" class="grid sm:grid-cols-2 md:grid-cols-3 gap-6"></div>
-  </main>
-
-  <script>
-    const token = localStorage.getItem("token");
-    if (!token) window.location.href = "login.html";
-
-    fetch("http://localhost:8000/videogame/", {
-      headers: { "Authorization": "Bearer " + token }
-    })
-      .then(res => res.json())
-      .then(data => {
-        const container = document.getElementById("gamesContainer");
-        if (Array.isArray(data)) {
-          data.forEach(game => {
-            const card = document.createElement("div");
-            card.className = "bg-gray-800 p-4 rounded shadow";
-            card.innerHTML = `
-              <h3 class="text-lg font-bold mb-1">${game.title || "Sin título"}</h3>
-              <p class="text-gray-400">${game.description || "Sin descripción"}</p>
-            `;
-            container.appendChild(card);
-          });
-        } else {
-          container.innerHTML = "<p>No se pudieron cargar los juegos.</p>";
-        }
-      });
-
-    function logout() {
-      localStorage.removeItem("token");
-      window.location.href = "login.html";
-    }
-  </script>
-</body>
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/svg+xml" href="/vite.svg" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Vite + Vue</title>
+  </head>
+  <body>
+    <div id="app"></div>
+    <script type="module" src="/src/main.js"></script>
+  </body>
 </html>
