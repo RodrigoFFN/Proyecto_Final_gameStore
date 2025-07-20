@@ -23,5 +23,12 @@ export const useAuthStore = defineStore('auth', {
                 return false
             }
         },
+        logout() {
+            this.accessToken = null
+            this.refreshToken = null
+            this.user = null;
+            localStorage.removeItem('access')
+            localStorage.removeItem('refresh')
+        },
     }
 })
