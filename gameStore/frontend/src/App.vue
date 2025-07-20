@@ -2,7 +2,6 @@
   <div id="app">
     <header>
       <h1>GameStore</h1>
-      <!-- Puedes agregar navegación aquí si quieres -->
     </header>
 
     <main>
