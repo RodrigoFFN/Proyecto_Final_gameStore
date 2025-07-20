@@ -1,8 +1,26 @@
+<template>
+  <div class="register-container">
+    <h2>Registro de Usuario</h2>
+
+    <form @submit.prevent="register" class="register-form">
+      <input v-model="username" placeholder="Nombre de usuario" required />
+      <input v-model="email" type="email" placeholder="Correo electrónico" required />
+      <input v-model="password" type="password" placeholder="Contraseña" required />
+      <input v-model="address" placeholder="Dirección" />
+      <input v-model="phone" placeholder="Teléfono" />
+
+      <button type="submit">Registrarse</button>
+    </form>
+
+    <p v-if="error" class="error-message">{{ error }}</p>
+    <p v-if="success" class="success-message">Registro exitoso. Redirigiendo...</p>
+  </div>
+</template>
+
 <script setup>
 import { ref } from 'vue'
-import axios from '@/api'
 import { useRouter } from 'vue-router'
-import api from '@/api'
+import axios from '@/api'
 
 const router = useRouter()
 
@@ -18,7 +36,6 @@ const register = async () => {
   error.value = ''
   success.value = false
   try {
-    // Paso 1: Registrar
     await axios.post('/api/register/', {
       username: username.value,
       email: email.value,
@@ -27,18 +44,15 @@ const register = async () => {
       phone: phone.value
     })
 
-    // Paso 2: Autenticar
     const response = await axios.post('/api/token/', {
       username: username.value,
       password: password.value
     })
 
-    // Paso 3: Guardar token
     const { access, refresh } = response.data
     localStorage.setItem('access', access)
     localStorage.setItem('refresh', refresh)
 
-    // Paso 4: Redirigir a inicio
     success.value = true
     router.push('/')
   } catch (err) {
@@ -50,3 +64,37 @@ const register = async () => {
   }
 }
 </script>
+
+<style scoped>
+.register-container {
+  max-width: 400px;
+  margin: 0 auto;
+  padding: 2rem;
+}
+
+.register-form input {
+  display: block;
+  width: 100%;
+  margin-bottom: 1rem;
+  padding: 0.5rem;
+  font-size: 1rem;
+}
+
+button {
+  padding: 0.6rem 1.2rem;
+  background-color: #2e7d32;
+  color: white;
+  border: none;
+  cursor: pointer;
+}
+
+.error-message {
+  color: red;
+  margin-top: 1rem;
+}
+
+.success-message {
+  color: green;
+  margin-top: 1rem;
+}
+</style>
