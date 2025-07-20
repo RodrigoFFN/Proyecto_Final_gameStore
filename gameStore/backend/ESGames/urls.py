@@ -8,7 +8,8 @@ from .views import (
     CartViewSet, CartItemViewSet,
     CategoryViewSet, LibraryViewSet,
     RatingViewSet, ReviewViewSet,
-    UserProfileViewSet, VideogameViewSet
+    UserProfileViewSet, VideogameViewSet,
+    RegisterView
 )
 
 router = DefaultRouter()
@@ -23,6 +24,8 @@ router.register(r'videogame', VideogameViewSet)
 
 urlpatterns = [
     path('', include(router.urls)),
+    
+    path('register/', RegisterView.as_view(), name='register'),
     
     # Endpoints para JWT
     path('token/', TokenObtainPairView.as_view(), name='token_obtain_pair'),
