@@ -21,7 +21,7 @@ class CartSerializer(serializers.ModelSerializer):
 class UserProfileSerializer(serializers.ModelSerializer):
     class Meta:
         model = UserProfile
-        fields = '_all_'
+        fields = '__all__'
 
 class CartItemSerializer(serializers.ModelSerializer):
     class Meta:
