@@ -2,7 +2,7 @@ import axios from 'axios'
 import { useAuthStore } from '../store/auth'
 
 const api = axios.create({
-    baseURL: 'https://esgames-backend.onrender.com',
+    baseURL: 'https://gamestore-backend-g1xi.onrender.com/',
     headers: {
         'Content-Type': 'application/json',
     }
