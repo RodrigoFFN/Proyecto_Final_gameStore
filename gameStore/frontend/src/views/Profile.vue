@@ -5,8 +5,6 @@
     <div v-if="user && profile">
       <p><strong>Username:</strong> {{ user.username }}</p>
       <p><strong>Email:</strong> {{ user.email }}</p>
-      <p v-if="user.first_name"><strong>First Name:</strong> {{ user.first_name }}</p>
-      <p v-if="user.last_name"><strong>Last Name:</strong> {{ user.last_name }}</p>
       <p v-if="profile.address"><strong>Address:</strong> {{ profile.address }}</p>
       <p v-if="profile.phone"><strong>Phone:</strong> {{ profile.phone }}</p>
     </div>
