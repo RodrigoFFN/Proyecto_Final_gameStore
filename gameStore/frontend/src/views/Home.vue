@@ -3,7 +3,7 @@
     <h1>Welcome to GameStore!</h1>
 
     <!-- Si ya está autenticado -->
-    <div v-else>
+    <div v-if>
       <p>Welcome back, {{ userName }}!</p>
       <button @click="goToCart">Go to Cart</button>
       <button @click="goToProfile">Profile</button>
