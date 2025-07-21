@@ -2,12 +2,6 @@
   <div>
     <h1>Welcome to GameStore!</h1>
 
-    <!-- Si no está autenticado -->
-    <div v-if="!isAuthenticated">
-      <button @click="goToLogin">Login</button>
-      <button @click="goToRegister">Register</button>
-    </div>
-
     <!-- Si ya está autenticado -->
     <div v-else>
       <p>Welcome back, {{ userName }}!</p>
