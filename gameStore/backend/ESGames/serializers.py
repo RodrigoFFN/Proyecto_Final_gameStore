@@ -11,7 +11,7 @@ from .models.videogame import Videogame
 class UserSerializer(serializers.ModelSerializer):
     class Meta:
         model = User
-        fields = ['username', 'email', 'password', 'address', 'phone', 'last_name']
+        fields = ['username','email','last_name']
 
 class CartSerializer(serializers.ModelSerializer):
     class Meta:
@@ -19,9 +19,11 @@ class CartSerializer(serializers.ModelSerializer):
         fields = '__all__'
 
 class UserProfileSerializer(serializers.ModelSerializer):
+    user = UserSerializer(read_only=True) 
+
     class Meta:
         model = UserProfile
-        fields = '__all__'
+        fields = ['user', 'address', 'phone', 'is_admin']
 
 class CartItemSerializer(serializers.ModelSerializer):
     class Meta:
@@ -63,16 +65,18 @@ class RegisterSerializer(serializers.ModelSerializer):
         extra_kwargs = {
             'password': {'write_only': True}
         }
+        
+    def create(self, validated_data):
+        address = validated_data.pop('address', '')
+        phone = validated_data.pop('phone', '')
+        last_name = validated_data.pop('last_name', '')
 
-def create(self, validated_data):
-    address = validated_data.pop('address', '')
-    phone = validated_data.pop('phone', '')
-    last_name = validated_data.pop('last_name', '')
+        user = User.objects.create_user(**validated_data)
+        user.last_name = last_name
+        user.save()
 
-    user = User.objects.create_user(**validated_data)
-    user.last_name = last_name
-    user.save()
+        UserProfile.objects.create(user=user, address=address, phone=phone)
 
-    UserProfile.objects.create(user=user, address=address, phone=phone)
+        return user
 
-    return user
+
