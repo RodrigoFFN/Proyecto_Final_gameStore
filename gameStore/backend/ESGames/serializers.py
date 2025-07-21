@@ -48,13 +48,6 @@ class ReviewSerializer(serializers.ModelSerializer):
         model = Review
         fields = '__all__'
 
-class UserProfileSerializer(serializers.ModelSerializer):
-    user = UserSerializer(read_only=True)
-
-    class Meta:
-        model = UserProfile
-        fields = ['user', 'address', 'phone', 'is_admin']
-
 class VideogameSerializer(serializers.ModelSerializer):
     class Meta:
         model = Videogame
