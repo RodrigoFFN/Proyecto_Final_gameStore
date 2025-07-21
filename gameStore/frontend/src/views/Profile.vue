@@ -2,25 +2,13 @@
   <div>
     <h2>My Profile</h2>
 
-    <div v-if="form">
-      <form @submit.prevent="updateProfile">
-        <label>Email:</label>
-        <input type="email" v-model="form.email" />
-
-        <label>First Name:</label>
-        <input type="text" v-model="form.first_name" />
-
-        <label>Last Name:</label>
-        <input type="text" v-model="form.last_name" />
-
-        <label>Address:</label>
-        <textarea v-model="form.address"></textarea>
-
-        <label>Phone:</label>
-        <input type="text" v-model="form.phone" />
-
-        <button type="submit">Save Changes</button>
-      </form>
+    <div v-if="user && profile">
+      <p><strong>Username:</strong> {{ user.username }}</p>
+      <p><strong>Email:</strong> {{ user.email }}</p>
+      <p v-if="user.first_name"><strong>First Name:</strong> {{ user.first_name }}</p>
+      <p v-if="user.last_name"><strong>Last Name:</strong> {{ user.last_name }}</p>
+      <p v-if="profile.address"><strong>Address:</strong> {{ profile.address }}</p>
+      <p v-if="profile.phone"><strong>Phone:</strong> {{ profile.phone }}</p>
     </div>
 
     <div v-else>
@@ -33,69 +21,28 @@
 import { ref, onMounted } from 'vue'
 import api from '@/api/api'
 
-const form = ref(null)
+const user = ref(null)
+const profile = ref(null)
 
 onMounted(async () => {
   try {
     const res = await api.get('api/my-profile/')
-    const data = res.data
-    form.value = {
-      email: data.user.email || '',
-      first_name: data.user.first_name || '',
-      last_name: data.user.last_name || '',
-      address: data.address || '',
-      phone: data.phone || ''
+    user.value = res.data.user
+    profile.value = {
+      address: res.data.address,
+      phone: res.data.phone
     }
   } catch (err) {
     console.error('Error loading profile:', err)
   }
 })
-
-const updateProfile = async () => {
-  try {
-    const payload = {
-      user: {
-        email: form.value.email,
-        first_name: form.value.first_name,
-        last_name: form.value.last_name
-      },
-      address: form.value.address,
-      phone: form.value.phone
-    }
-
-    await api.patch('api/my-profile/', payload)
-    alert('Profile updated successfully!')
-  } catch (err) {
-    console.error('Update failed:', err)
-    alert('Error updating profile.')
-  }
-}
 </script>
 
 <style scoped>
-form {
-  display: flex;
-  flex-direction: column;
-  gap: 0.8rem;
-  max-width: 400px;
+h2 {
+  margin-bottom: 1rem;
 }
-label {
-  font-weight: bold;
-}
-input, textarea {
-  padding: 0.5rem;
-  font-size: 1rem;
-}
-button {
-  margin-top: 1rem;
-  padding: 0.6rem;
-  background-color: #0077cc;
-  color: white;
-  border: none;
-  border-radius: 4px;
-  cursor: pointer;
-}
-button:hover {
-  background-color: #005fa3;
+p {
+  margin: 0.5rem 0;
 }
 </style>
