@@ -21,9 +21,12 @@
 import { ref } from 'vue'
 import { useRouter } from 'vue-router'
 import api from '@/api/api.js'
+import { useAuthStore } from '@/stores/auth.js'
 
 const router = useRouter()
+const authStore = useAuthStore()
 
+// Form refs
 const username = ref('')
 const email = ref('')
 const password = ref('')
@@ -35,6 +38,7 @@ const success = ref(false)
 const register = async () => {
   error.value = ''
   success.value = false
+
   try {
     const response = await api.post('/api/register/', {
       username: username.value,
@@ -45,8 +49,11 @@ const register = async () => {
     })
 
     const { access, refresh } = response.data
-    localStorage.setItem('access', access)
-    localStorage.setItem('refresh', refresh)
+    authStore.handleLoginTokens({
+      access,
+      refresh,
+      username: username.value
+    })
 
     success.value = true
     router.push('/')
