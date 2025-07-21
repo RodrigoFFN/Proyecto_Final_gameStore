@@ -3,7 +3,8 @@
     <h2>Registro de Usuario</h2>
 
     <form @submit.prevent="register" class="register-form">
-      <input v-model="username" placeholder="Nombre de usuario" required />
+      <input v-model="username" placeholder="Nombre" required />
+      <input v-model="last_name" placeholder="Apellido" required />
       <input v-model="email" type="email" placeholder="Correo electrónico" required />
       <input v-model="password" type="password" placeholder="Contraseña" required />
       <input v-model="address" placeholder="Dirección" />
@@ -26,12 +27,12 @@ import { useAuthStore } from '@/store/auth.js'
 const router = useRouter()
 const authStore = useAuthStore()
 
-// Form refs
 const username = ref('')
 const email = ref('')
 const password = ref('')
 const address = ref('')
 const phone = ref('')
+const last_name = ref('')
 const error = ref('')
 const success = ref(false)
 
@@ -45,8 +46,10 @@ const register = async () => {
       email: email.value,
       password: password.value,
       address: address.value,
-      phone: phone.value
+      phone: phone.value,
+      last_name: last_name.value
     })
+
 
     const { access, refresh } = response.data
     authStore.handleLoginTokens({
