@@ -2,7 +2,7 @@
   <div>
     <h1>Welcome to GameStore!</h1>
 
-    <div v-if="!isAuthenticated">
+    <div v-if="isAuthenticated">
       <p>Welcome back, {{ userName }}!</p>
       <button @click="goToCart">Go to Cart</button>
       <button @click="goToProfile">Profile</button>
