@@ -26,8 +26,7 @@ SECRET_KEY = 'django-insecure-sphxo2*%#c&ho+o74m&$i6lo-b=vy2&ay*uu)y#-&#b8l^n^w#
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['esgames-backend.onrender.com']
-
+ALLOWED_HOSTS = ['gamestore-backend-g1xi.onrender.com']
 
 # Application definition
 
