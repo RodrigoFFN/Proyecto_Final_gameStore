@@ -8,6 +8,11 @@ from .models.review import Review
 from .models.user_profile import UserProfile
 from .models.videogame import Videogame
 
+class UserSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = User
+        fields = ['username', 'email', 'first_name', 'last_name']
+
 class CartSerializer(serializers.ModelSerializer):
     class Meta:
         model = Cart
@@ -39,9 +44,11 @@ class ReviewSerializer(serializers.ModelSerializer):
         fields = '__all__'
 
 class UserProfileSerializer(serializers.ModelSerializer):
+    user = UserSerializer(read_only=True)
+
     class Meta:
         model = UserProfile
-        fields = '__all__'
+        fields = ['user', 'address', 'phone', 'is_admin']
 
 class VideogameSerializer(serializers.ModelSerializer):
     class Meta:
