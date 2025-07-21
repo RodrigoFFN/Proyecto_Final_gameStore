@@ -11,7 +11,7 @@ from .models.videogame import Videogame
 class UserSerializer(serializers.ModelSerializer):
     class Meta:
         model = User
-        fields = ['username', 'email', 'first_name', 'last_name']
+        fields = ['username', 'email']
 
 class CartSerializer(serializers.ModelSerializer):
     class Meta:
@@ -71,7 +71,6 @@ class RegisterSerializer(serializers.ModelSerializer):
         phone = validated_data.pop('phone', '')
 
         user = User.objects.create_user(**validated_data)
-
         UserProfile.objects.create(user=user, address=address, phone=phone)
 
         return user
