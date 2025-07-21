@@ -21,6 +21,7 @@ export const useAuthStore = defineStore('auth', {
                 this.user = { username }
                 localStorage.setItem('access', this.accessToken)
                 localStorage.setItem('refresh', this.refreshToken)
+                localStorage.setItem('username', username)
                 return true
             } catch (err) {
                 console.error('Login failed', err)
@@ -54,7 +55,7 @@ export const useAuthStore = defineStore('auth', {
             if (access) {
                 this.accessToken = access
                 this.refreshToken = refresh
-                this.user = { username: username || 'usuario' }
+                this.user = { username }
             }
         }
     }
