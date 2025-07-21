@@ -1,7 +1,9 @@
 <template>
   <div id="app">
     <header>
-      <h1>GameStore</h1>
+      <h1>
+      <router-link to="/" class="title-link">GameStore</router-link>
+      </h1>
       <nav>
         <router-link v-if="!auth.isAuthenticated" to="/login">Login</router-link>
         <router-link v-if="!auth.isAuthenticated" to="/register">Register</router-link>
