@@ -23,7 +23,7 @@ const routes = [
   {
     path: '/',
     name: 'Home',
-    component: () => import('../views/Home.vue')
+    component: Home
   },
   {
     path: '/login',
@@ -38,7 +38,35 @@ const routes = [
   {
     path: '/profile',            
     name: 'Profile',
-    component: Profile
+    component: Profile,
+    beforeEnter: requireAuth
+  },
+  {
+    path: '/cart',
+    name: 'Cart',
+    component: CartView,
+    beforeEnter: requireAuth
+  },
+  {
+    path: '/game/:id',
+    name: 'GameDetail',
+    component: GameDetail
+  },
+  {
+    path: '/library',            
+    name: 'Library',
+    component: LibraryView,
+    beforeEnter: requireAuth
+  },
+  { 
+    path: '/categories', 
+    name: 'Categories', 
+    component: Categories 
+  },
+  { 
+    path: '/category/:id', 
+    name: 'CategoryGames', 
+    component: CategoryGames 
   }
 ]
 
