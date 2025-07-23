@@ -51,11 +51,6 @@ class LibraryViewSet(viewsets.ModelViewSet):
     def get_queryset(self):
         return Library.objects.filter(user=self.request.user.userprofile)
 
-class RatingViewSet(viewsets.ModelViewSet):
-    queryset = Rating.objects.all()
-    serializer_class = RatingSerializer
-    permission_classes = [IsAuthenticated]
-
 class ReviewViewSet(viewsets.ModelViewSet):
     queryset = Review.objects.all()
     serializer_class = ReviewSerializer
