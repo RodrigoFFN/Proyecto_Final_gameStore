@@ -25,14 +25,21 @@ class UserProfileSerializer(serializers.ModelSerializer):
         model = UserProfile
         fields = ['user', 'balance', 'address', 'phone', 'is_admin']
 
-class CartItemSerializer(serializers.ModelSerializer):
-    class Meta:
-        model = CartItem
-        fields = '__all__'
-
 class CategorySerializer(serializers.ModelSerializer):
     class Meta:
         model = Category
+        fields = '__all__'
+
+class VideogameSerializer(serializers.ModelSerializer):
+    category = CategorySerializer(read_only=True)
+    
+    class Meta:
+        model = Videogame
+        fields = '__all__'
+        
+class CartItemSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = CartItem
         fields = '__all__'
 
 class LibrarySerializer(serializers.ModelSerializer):
@@ -50,10 +57,7 @@ class ReviewSerializer(serializers.ModelSerializer):
         model = Review
         fields = '__all__'
 
-class VideogameSerializer(serializers.ModelSerializer):
-    class Meta:
-        model = Videogame
-        fields = '__all__'
+
 
 class RegisterSerializer(serializers.ModelSerializer):
     address = serializers.CharField(write_only=True, required=False)
