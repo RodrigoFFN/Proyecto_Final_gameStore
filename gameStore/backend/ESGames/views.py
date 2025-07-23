@@ -71,6 +71,16 @@ class UserProfileViewSet(viewsets.ModelViewSet):
     serializer_class = UserProfileSerializer
     permission_classes = [IsAuthenticated]
 
+    @action(detail=True, methods=['get'], url_path='library')
+    def library(self, request, pk=None):
+        try:
+            profile = self.get_object()
+            items = Library.objects.filter(user=profile)
+            serializer = LibrarySerializer(items, many=True)
+            return Response(serializer.data)
+        except UserProfile.DoesNotExist:
+            return Response({'error': 'Perfil no encontrado'}, status=404)
+
 class VideogameViewSet(viewsets.ModelViewSet):
     queryset = Videogame.objects.all()
     serializer_class = VideogameSerializer
