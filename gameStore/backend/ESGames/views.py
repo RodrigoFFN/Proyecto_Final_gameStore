@@ -140,3 +140,15 @@ class AddToCartView(APIView):
             return Response({'success': True}, status=status.HTTP_200_OK)
         except Exception as e:
             return Response({'error': str(e)}, status=status.HTTP_400_BAD_REQUEST)
+
+class UpdateCartItemView(APIView):
+    permission_classes = [IsAuthenticated]
+
+    def put(self, request, item_id):
+        try:
+            item = CartItem.objects.get(id=item_id, cart=request.user.userprofile.cart)
+            item.quantity = int(request.data.get('quantity', 1))
+            item.save()
+            return Response({'success': True})
+        except CartItem.DoesNotExist:
+            return Response({'error': 'Item not found'}, status=404)
