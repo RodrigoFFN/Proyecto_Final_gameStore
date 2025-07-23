@@ -10,6 +10,15 @@ import LibraryView from '@/views/LibraryView.vue'
 import Categories from '@/views/Categories.vue'
 import CategoryGames from '@/views/CategoryGames.vue'
 
+const requireAuth = (to, from, next) => {
+  const auth = useAuthStore()
+  if (auth.isAuthenticated) {
+    next()
+  } else {
+    next('/login')
+  }
+}
+
 const routes = [
   {
     path: '/',
