@@ -64,8 +64,6 @@ class ReviewSerializer(serializers.ModelSerializer):
         model = Review
         fields = ['id', 'user', 'videogame', 'videogame_id', 'comment', 'rating', 'date']
 
-
-
 class RegisterSerializer(serializers.ModelSerializer):
     address = serializers.CharField(write_only=True, required=False)
     phone = serializers.CharField(write_only=True, required=False)
@@ -87,6 +85,7 @@ class RegisterSerializer(serializers.ModelSerializer):
         user.save()
 
         UserProfile.objects.create(user=user, address=address, phone=phone)
+        Cart.objects.create(user=user.userprofile)
 
         return user
 
