@@ -201,15 +201,21 @@ def buy_cart_items(request):
     if profile.balance < total_price:
         return Response({'error': 'Saldo insuficiente.'}, status=status.HTTP_400_BAD_REQUEST)
 
-    # Descontar dinero
     profile.balance -= Decimal(total_price)
     profile.save()
 
-    # Agregar videojuegos a la librería
     for item in cart_items:
         Library.objects.create(user=user, videogame=item.videogame)
 
-    # Vaciar carrito
     cart_items.delete()
 
     return Response({'message': 'Compra realizada con éxito.', 'new_balance': str(profile.balance)})
+
+@api_view(['GET'])
+@permission_classes([IsAuthenticated])
+def my_cart_items(request):
+    user_profile = request.user.userprofile
+    cart, _ = Cart.objects.get_or_create(user=user_profile)
+    items = CartItem.objects.filter(cart=cart)
+    serializer = CartItemSerializer(items, many=True)
+    return Response(serializer.data)
