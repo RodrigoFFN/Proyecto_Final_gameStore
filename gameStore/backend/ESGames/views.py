@@ -185,3 +185,31 @@ def recharge_balance(request):
         'message': f'Se ha recargado ${amount} correctamente.',
         'new_balance': str(profile.balance)
     })
+    
+@api_view(['POST'])
+@permission_classes([IsAuthenticated])
+def buy_cart_items(request):
+    user = request.user
+    profile = user.userprofile
+    cart_items = CartItem.objects.filter(cart=user.cart)
+
+    if not cart_items.exists():
+        return Response({'error': 'El carrito está vacío.'}, status=status.HTTP_400_BAD_REQUEST)
+
+    total_price = sum(item.videogame.price * item.quantity for item in cart_items)
+
+    if profile.balance < total_price:
+        return Response({'error': 'Saldo insuficiente.'}, status=status.HTTP_400_BAD_REQUEST)
+
+    # Descontar dinero
+    profile.balance -= Decimal(total_price)
+    profile.save()
+
+    # Agregar videojuegos a la librería
+    for item in cart_items:
+        Library.objects.create(user=user, videogame=item.videogame)
+
+    # Vaciar carrito
+    cart_items.delete()
+
+    return Response({'message': 'Compra realizada con éxito.', 'new_balance': str(profile.balance)})
