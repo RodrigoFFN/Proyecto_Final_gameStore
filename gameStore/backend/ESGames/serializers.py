@@ -38,9 +38,11 @@ class VideogameSerializer(serializers.ModelSerializer):
         fields = '__all__'
         
 class CartItemSerializer(serializers.ModelSerializer):
+    videogame = VideogameSerializer(read_only=True)
+
     class Meta:
         model = CartItem
-        fields = '__all__'
+        fields = ['id', 'videogame', 'quantity']
 
 class LibrarySerializer(serializers.ModelSerializer):
     class Meta:
