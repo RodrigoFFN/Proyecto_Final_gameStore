@@ -7,8 +7,8 @@ from .models import (
     Cart,
     CartItem,
     Review,
-    Rating,
     Library,
+    Favorite,
 )
 
 admin.site.register(UserProfile)
@@ -17,5 +17,5 @@ admin.site.register(Category)
 admin.site.register(Cart)
 admin.site.register(CartItem)
 admin.site.register(Review)
-admin.site.register(Rating)
 admin.site.register(Library)
+admin.site.register(Favorite)  
