@@ -151,7 +151,7 @@ class UpdateCartItemView(APIView):
             item.save()
             return Response({'success': True})
         except CartItem.DoesNotExist:
-            return Response({'error': 'Item not found'}, status=404)
+            return Response({'error': 'Item no encontrado'}, status=404)
 
 class DeleteCartItemView(APIView):
     permission_classes = [IsAuthenticated]
@@ -162,4 +162,26 @@ class DeleteCartItemView(APIView):
             item.delete()
             return Response({'success': True})
         except CartItem.DoesNotExist:
-            return Response({'error': 'Item not found'}, status=404)
+            return Response({'error': 'Item no encontrado'}, status=404)
+
+@api_view(['POST'])
+@permission_classes([IsAuthenticated])
+def recharge_balance(request):
+    amount = request.data.get('amount')
+
+    try:
+        amount = Decimal(amount)
+    except:
+        return Response({'error': 'Monto inválido'}, status=status.HTTP_400_BAD_REQUEST)
+
+    if amount <= 0:
+        return Response({'error': 'El monto debe ser mayor que 0'}, status=status.HTTP_400_BAD_REQUEST)
+
+    profile = request.user.userprofile
+    profile.balance += amount
+    profile.save()
+
+    return Response({
+        'message': f'Se ha recargado ${amount} correctamente.',
+        'new_balance': str(profile.balance)
+    })
