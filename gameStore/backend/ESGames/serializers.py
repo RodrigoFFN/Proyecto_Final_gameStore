@@ -23,7 +23,7 @@ class UserProfileSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = UserProfile
-        fields = ['user', 'address', 'phone', 'is_admin']
+        fields = ['user', 'balance', 'address', 'phone', 'is_admin']
 
 class CartItemSerializer(serializers.ModelSerializer):
     class Meta:
