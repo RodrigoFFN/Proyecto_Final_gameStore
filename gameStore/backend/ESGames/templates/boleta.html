@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <style>
+        body { font-family: Arial, sans-serif; }
+        h1 { text-align: center; }
+        .info { margin: 10px 0; }
+        .section { margin-bottom: 30px; }
+        table { width: 100%; border-collapse: collapse; }
+        th, td { border: 1px solid #000; padding: 8px; text-align: left; }
+        .right { text-align: right; }
+    </style>
+</head>
+<body>
+    <h1>Boleta de Compra</h1>
+
+    <div class="section">
+        <p class="info"><strong>Usuario:</strong> {{ user.username }}</p>
+        <p class="info"><strong>Email:</strong> {{ user.email }}</p>
+        <p class="info"><strong>Dirección:</strong> {{ profile.address }}</p>
+        <p class="info"><strong>Teléfono:</strong> {{ profile.phone }}</p>
+        <p class="info"><strong>Fecha:</strong> {{ date }}</p>
+    </div>
+
+    <h2>Detalle de la Compra</h2>
+    <table>
+        <thead>
+            <tr>
+                <th>Juego</th>
+                <th>Cantidad</th>
+                <th>Precio Unitario</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for item in items %}
+            <tr>
+                <td>{{ item.videogame.title }}</td>
+                <td>{{ item.quantity }}</td>
+                <td>S/. {{ item.videogame.price }}</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <p class="info right"><strong>Total a pagar:</strong> S/. {{ total|floatformat:2 }}</p>
+</body>
+</html>
