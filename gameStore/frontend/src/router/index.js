@@ -4,6 +4,8 @@ import Home from '../views/Home.vue'
 import Login from '../views/Login.vue'
 import Register from '../views/Register.vue'
 import Profile from '../views/Profile.vue' 
+import CartView from '@/views/CartView.vue'
+import LibraryView from '@/views/LibraryView.vue'
 
 const routes = [
   {
