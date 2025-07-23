@@ -51,15 +51,18 @@ class LibrarySerializer(serializers.ModelSerializer):
         model = Library
         fields = '__all__'
 
-class RatingSerializer(serializers.ModelSerializer):
-    class Meta:
-        model = Rating
-        fields = '__all__'
-
 class ReviewSerializer(serializers.ModelSerializer):
+    user = UserProfileSerializer(read_only=True)
+    videogame = VideogameSerializer(read_only=True)
+    videogame_id = serializers.PrimaryKeyRelatedField(
+        queryset=Videogame.objects.all(),
+        source='videogame',
+        write_only=True
+    )
+
     class Meta:
         model = Review
-        fields = '__all__'
+        fields = ['id', 'user', 'videogame', 'videogame_id', 'comment', 'rating', 'date']
 
 
 
