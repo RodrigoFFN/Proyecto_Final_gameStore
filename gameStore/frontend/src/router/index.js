@@ -1,12 +1,14 @@
 import { createRouter, createWebHistory } from 'vue-router'
 import { useAuthStore } from '@/store/auth'
-import Home from '../views/Home.vue'
-import Login from '../views/Login.vue'
-import Register from '../views/Register.vue'
-import Profile from '../views/Profile.vue' 
+import Home from '@/views/Home.vue'
+import Login from '@/views/Login.vue'
+import Register from '@/views/Register.vue'
+import Profile from '@/views/Profile.vue'
 import CartView from '@/views/CartView.vue'
-import LibraryView from '@/views/LibraryView.vue'
 import GameDetail from '@/views/GameDetail.vue'
+import LibraryView from '@/views/LibraryView.vue'
+import Categories from '@/views/Categories.vue'
+import CategoryGames from '@/views/CategoryGames.vue'
 
 const routes = [
   {
