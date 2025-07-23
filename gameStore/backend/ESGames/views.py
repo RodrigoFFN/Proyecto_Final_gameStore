@@ -54,7 +54,17 @@ class LibraryViewSet(viewsets.ModelViewSet):
 class ReviewViewSet(viewsets.ModelViewSet):
     queryset = Review.objects.all()
     serializer_class = ReviewSerializer
-    permission_classes = [IsAuthenticatedOrReadOnly]
+    permission_classes = [IsAuthenticated, IsOwnerOrReadOnly]
+
+    def get_queryset(self):
+        queryset = super().get_queryset()
+        videogame_id = self.request.query_params.get('videogame')
+        if videogame_id:
+            queryset = queryset.filter(videogame__id=videogame_id)
+        return queryset
+
+    def perform_create(self, serializer):
+        serializer.save(user=self.request.user.userprofile)
 
 class UserProfileViewSet(viewsets.ModelViewSet):
     queryset = UserProfile.objects.all()
