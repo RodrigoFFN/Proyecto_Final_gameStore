@@ -3,10 +3,10 @@ from django.contrib.auth.models import User
 from .models.cart import Cart, CartItem
 from .models.category import Category
 from .models.library import Library
-from .models.rating import Rating
 from .models.review import Review
 from .models.user_profile import UserProfile
 from .models.videogame import Videogame
+from .models.favorite import Favorite
 
 class UserSerializer(serializers.ModelSerializer):
     class Meta:
@@ -63,6 +63,13 @@ class ReviewSerializer(serializers.ModelSerializer):
     class Meta:
         model = Review
         fields = ['id', 'user', 'videogame', 'videogame_id', 'comment', 'rating', 'date']
+
+class FavoriteSerializer(serializers.ModelSerializer):
+    videogame_title = serializers.ReadOnlyField(source='videogame.title')
+
+    class Meta:
+        model = Favorite
+        fields = ['id', 'videogame', 'videogame_title']
 
 class RegisterSerializer(serializers.ModelSerializer):
     address = serializers.CharField(write_only=True, required=False)
