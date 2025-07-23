@@ -118,3 +118,25 @@ class FavoriteViewSet(viewsets.ModelViewSet):
         user_profile = UserProfile.objects.get(user=self.request.user)
         serializer.save(user_profile=user_profile)
 
+class AddToCartView(APIView):
+    permission_classes = [IsAuthenticated]
+
+    def post(self, request):
+        user_profile = request.user.userprofile
+        user_cart, _ = Cart.objects.get_or_create(user=user_profile)
+        videogame_id = request.data.get('videogame_id')
+        quantity = int(request.data.get('quantity', 1))
+
+        try:
+            item, created = CartItem.objects.get_or_create(
+                cart=user_cart,
+                videogame_id=videogame_id,
+                defaults={'quantity': quantity}
+            )
+            if not created:
+                item.quantity += quantity
+                item.save()
+
+            return Response({'success': True}, status=status.HTTP_200_OK)
+        except Exception as e:
+            return Response({'error': str(e)}, status=status.HTTP_400_BAD_REQUEST)
