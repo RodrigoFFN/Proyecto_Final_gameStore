@@ -104,3 +104,17 @@ class MyProfileView(APIView):
         profile = request.user.userprofile
         serializer = UserProfileSerializer(profile)
         return Response(serializer.data)
+    
+class FavoriteViewSet(viewsets.ModelViewSet):
+    queryset = Favorite.objects.all()
+    serializer_class = FavoriteSerializer
+    permission_classes = [IsAuthenticated]
+
+    def get_queryset(self):
+        user_profile = UserProfile.objects.get(user=self.request.user)
+        return Favorite.objects.filter(user_profile=user_profile)
+
+    def perform_create(self, serializer):
+        user_profile = UserProfile.objects.get(user=self.request.user)
+        serializer.save(user_profile=user_profile)
+
