@@ -219,3 +219,50 @@ def my_cart_items(request):
     items = CartItem.objects.filter(cart=cart)
     serializer = CartItemSerializer(items, many=True)
     return Response(serializer.data)
+
+@api_view(['POST'])
+@permission_classes([IsAuthenticated])
+def checkout(request):
+    user_profile = request.user.userprofile
+
+    try:
+        cart = Cart.objects.get(user=user_profile)
+        items = CartItem.objects.filter(cart=cart).select_related('videogame')
+    except Cart.DoesNotExist:
+        return Response({'error': 'Carrito no encontrado.'}, status=status.HTTP_404_NOT_FOUND)
+
+    if not items:
+        return Response({'error': 'El carrito está vacío.'}, status=400)
+
+    total_price = sum(item.videogame.price * item.quantity for item in items)
+
+    if user_profile.balance < total_price:
+        return Response({'error': 'Saldo insuficiente.'}, status=status.HTTP_400_BAD_REQUEST)
+
+    template = get_template('boleta.html')
+    html = template.render({
+        'user': request.user,
+        'profile': user_profile,
+        'items': items,
+        'total': total_price,
+        'date': datetime.now().strftime('%d/%m/%Y'),
+    })
+
+    pdf_buffer = BytesIO()
+    pisa_status = pisa.CreatePDF(html, dest=pdf_buffer)
+    if pisa_status.err:
+        return Response({'error': 'Error al generar la boleta PDF.'}, status=500)
+    pdf_buffer.seek(0)
+
+    for item in items:
+        for _ in range(item.quantity):
+            Library.objects.get_or_create(user=user_profile, videogame=item.videogame)
+
+    user_profile.balance -= Decimal(total_price)
+    user_profile.save()
+
+    items.delete()
+
+    response = HttpResponse(pdf_buffer, content_type='application/pdf')
+    response['Content-Disposition'] = 'attachment; filename="boleta_compra.pdf"'
+    return response
