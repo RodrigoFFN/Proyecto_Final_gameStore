@@ -55,4 +55,11 @@ export function useGamesLogic() {
             console.error('Error fetching purchased games:', err)
         }
     }
+
+    const filteredGames = computed(() => {
+        if (!selectedCategory.value) return videogames.value
+        return videogames.value.filter(game =>
+            game.category && game.category.id === selectedCategory.value
+        )
+    })
 }
