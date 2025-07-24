@@ -54,6 +54,8 @@
           <p class="mb-1"><strong>📂 Categoría:</strong> {{ game.category?.name }}</p>
           <p class="mb-2"><strong>📅 Lanzamiento:</strong> {{ formatDate(game.release_date) }}</p>
 
+          <router-link :to="`/game/${game.id}`" class="btn btn-link p-0">Detalles</router-link>
+
         </b-card>
       </b-col>
     </b-row>
