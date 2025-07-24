@@ -98,5 +98,8 @@
 </template>
 
 <script setup>
+import { useGamesLogic } from '@/composables/useGamesLogic'
+import { useAuthStore } from '@/store/auth'
+import { computed } from 'vue'
 
 </script>
