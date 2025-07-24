@@ -8,3 +8,19 @@
     </ul>
   </div>
 </template>
+
+<script>
+import api from '@/api/api'
+
+export default {
+  data() {
+    return {
+      categories: []
+    }
+  },
+  async created() {
+    const res = await api.get('api/category/')
+    this.categories = res.data
+  }
+}
+</script>
