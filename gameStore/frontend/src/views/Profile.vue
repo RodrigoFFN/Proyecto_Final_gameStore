@@ -97,3 +97,13 @@ const fetchFavorites = async () => {
     console.error('Error al cargar favoritos:', err)
   }
 }
+
+const removeFavorite = async (favoriteId) => {
+  try {
+    await api.delete(`api/favorites/${favoriteId}/`)
+    favorites.value = favorites.value.filter(fav => fav.id !== favoriteId)
+    alert('El juego fue quitado de favoritos')
+  } catch (err) {
+    console.error('Error al quitar favorito:', err)
+  }
+}
