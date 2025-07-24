@@ -88,3 +88,12 @@ const rechargeBalance = async () => {
     console.error('Error recharging balance:', err)
   }
 }
+
+const fetchFavorites = async () => {
+  try {
+    const res = await api.get('api/favorites/')
+    favorites.value = res.data
+  } catch (err) {
+    console.error('Error al cargar favoritos:', err)
+  }
+}
