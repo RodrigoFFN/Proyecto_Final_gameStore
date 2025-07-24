@@ -53,3 +53,16 @@ const validAmount = computed(() => {
   return rechargeAmount.value && rechargeAmount.value > 0
 })
 
+const loadProfile = async () => {
+  try {
+    const res = await api.get('api/my-profile/')
+    user.value = res.data.user
+    profile.value = {
+      address: res.data.address,
+      phone: res.data.phone,
+      balance: res.data.balance
+    }
+  } catch (err) {
+    console.error('Error loading profile:', err)
+  }
+}
