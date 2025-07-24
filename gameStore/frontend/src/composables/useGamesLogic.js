@@ -107,4 +107,9 @@ export function useGamesLogic() {
             console.error('Error adding to cart:', err)
         }
     }
+
+    const formatDate = (dateStr) => {
+        const date = new Date(dateStr)
+        return date.toLocaleDateString()
+    }
 }
