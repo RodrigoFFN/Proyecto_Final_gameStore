@@ -98,4 +98,13 @@ export function useGamesLogic() {
             }
         }
     }
+
+    const addToCart = async (gameId) => {
+        try {
+            await cart.addToCart(gameId)
+            alert("Game added to cart!")
+        } catch (err) {
+            console.error('Error adding to cart:', err)
+        }
+    }
 }
