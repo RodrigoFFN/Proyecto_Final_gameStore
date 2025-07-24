@@ -66,3 +66,114 @@
     <p>Loading game details...</p>
   </div>
 </template>
+
+<script setup>
+import { ref, onMounted, computed } from 'vue'
+import { useRoute } from 'vue-router'
+import api from '@/api/api'
+import { useAuthStore } from '@/store/auth'
+
+const route = useRoute()
+const auth = useAuthStore()
+const gameId = route.params.id
+
+const game = ref(null)
+const reviews = ref([])
+const newReview = ref('')
+const newRating = ref('')
+const averageRating = ref(null)
+
+const editingId = ref(null)
+const editText = ref('')
+const editRating = ref('')
+
+const isAuthenticated = computed(() => auth.accessToken !== null)
+
+const fetchGame = async () => {
+  try {
+    const res = await api.get(`api/videogame/${gameId}/`)
+    game.value = res.data
+  } catch (err) {
+    console.error('Error loading game:', err)
+  }
+}
+
+const fetchReviews = async () => {
+  try {
+    const res = await api.get('api/review/', {
+      params: { videogame: gameId }
+    })
+    reviews.value = res.data
+    calculateAverageRating()
+  } catch (err) {
+    console.error('Error loading reviews:', err)
+  }
+}
+
+const calculateAverageRating = () => {
+  if (reviews.value.length === 0) {
+    averageRating.value = null
+    return
+  }
+  const total = reviews.value.reduce((sum, r) => sum + r.rating, 0)
+  averageRating.value = total / reviews.value.length
+}
+
+const submitReview = async () => {
+  try {
+    await api.post('api/review/', {
+      comment: newReview.value,
+      rating: newRating.value,
+      videogame_id: gameId
+    })
+    newReview.value = ''
+    newRating.value = ''
+    await fetchReviews()
+  } catch (err) {
+    console.error('Error submitting review:', err)
+  }
+}
+
+const startEdit = (review) => {
+  editingId.value = review.id
+  editText.value = review.comment
+  editRating.value = review.rating
+}
+
+const cancelEdit = () => {
+  editingId.value = null
+  editText.value = ''
+  editRating.value = ''
+}
+
+const updateReview = async (reviewId) => {
+  try {
+    await api.put(`api/review/${reviewId}/`, {
+      comment: editText.value,
+      rating: editRating.value,
+      videogame_id: gameId
+    })
+    editingId.value = null
+    editText.value = ''
+    editRating.value = ''
+    await fetchReviews()
+  } catch (err) {
+    console.error('Error updating review:', err)
+  }
+}
+
+const deleteReview = async (reviewId) => {
+  if (!confirm('Are you sure you want to delete this review?')) return
+  try {
+    await api.delete(`api/review/${reviewId}/`)
+    await fetchReviews()
+  } catch (err) {
+    console.error('Error deleting review:', err)
+  }
+}
+
+onMounted(() => {
+  fetchGame()
+  fetchReviews()
+})
+</script>
