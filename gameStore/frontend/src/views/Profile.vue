@@ -32,7 +32,24 @@
       </ul>
       <p v-else>No tienes juegos en favoritos aún.</p>
     </div>
-
+    <div v-else>
+      <p>Loading user data...</p>
+    </div>
   </div>
 </template>
+
+<script setup>
+import { ref, onMounted, computed } from 'vue'
+import api from '@/api/api'
+
+const user = ref(null)
+const profile = ref(null)
+const rechargeAmount = ref(null)
+const favorites = ref([])
+const successMessage = ref('')
+const errorMessage = ref('')
+
+const validAmount = computed(() => {
+  return rechargeAmount.value && rechargeAmount.value > 0
+})
 
