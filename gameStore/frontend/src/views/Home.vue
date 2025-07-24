@@ -122,4 +122,13 @@ const {
   loading,
 } = useGamesLogic()
 
+const categoryOptions = computed(() => {
+  const options = [{ value: null, text: 'Todas las categorías' }]
+  if (Array.isArray(categories.value)) {
+    categories.value.forEach(cat => {
+      options.push({ value: cat.id, text: cat.name })
+    })
+  }
+  return options
+})
 </script>
