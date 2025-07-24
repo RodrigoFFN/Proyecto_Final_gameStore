@@ -62,4 +62,7 @@
     </div>
   </div>
 
+  <div v-else>
+    <p>Loading game details...</p>
+  </div>
 </template>
