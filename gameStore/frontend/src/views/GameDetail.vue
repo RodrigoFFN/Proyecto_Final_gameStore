@@ -15,5 +15,34 @@
 
     <hr />
 
+    <h2>Reviews</h2>
+    <div v-if="reviews.length === 0">No reviews yet.</div>
+    <ul>
+      <li v-for="review in reviews" :key="review.id">
+        <strong>{{ review.user.user.username }}</strong>:
+        <template v-if="editingId === review.id">
+          <input v-model="editText" style="width: 70%;" />
+          <select v-model="editRating">
+            <option disabled value="">Select rating</option>
+            <option v-for="n in 5" :key="n" :value="n">{{ n }}</option>
+          </select>
+          <button @click="updateReview(review.id)">Save</button>
+          <button @click="cancelEdit">Cancel</button>
+        </template>
+        <template v-else>
+          {{ review.comment }}<br />
+          <strong>Rating:</strong>
+          {{ '★'.repeat(review.rating) + '☆'.repeat(5 - review.rating) }}<br />
+          <small>{{ new Date(review.date).toLocaleDateString() }}</small>
+
+          <template v-if="review.user.user.id === auth.user.id">
+            <button @click="startEdit(review)">Edit</button>
+            <button @click="deleteReview(review.id)">Delete</button>
+          </template>
+        </template>
+      </li>
+    </ul>
+
+  </div>
 
 </template>
