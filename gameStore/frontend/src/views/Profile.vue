@@ -107,3 +107,19 @@ const removeFavorite = async (favoriteId) => {
     console.error('Error al quitar favorito:', err)
   }
 }
+
+
+onMounted(() => {
+  loadProfile()
+  fetchFavorites()  
+})
+</script>
+
+<style scoped>
+h2 {
+  margin-bottom: 1rem;
+}
+p {
+  margin: 0.5rem 0;
+}
+</style>
