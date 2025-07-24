@@ -18,6 +18,17 @@ export const useCartStore = defineStore('cart', {
         console.error('Error al obtener ítems del carrito:', error)
       }
     },
+    async addToCart(videogameId, quantity = 1) {
+      try {
+        await api.post('api/add-to-cart/', {
+          videogame_id: videogameId,
+          quantity: quantity
+        })
+        await this.fetchCartItems()
+      } catch (error) {
+        console.error('Error al agregar al carrito:', error)
+      }
+    },
 
   },
 })
