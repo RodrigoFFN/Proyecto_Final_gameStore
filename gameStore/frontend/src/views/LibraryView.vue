@@ -16,3 +16,26 @@
     </div>
   </div>
 </template>
+
+<script setup>
+import { ref, onMounted } from 'vue'
+import api from '@/api/api'
+
+const games = ref([])
+
+const fetchLibrary = async () => {
+  try {
+    const res = await api.get('api/library/')
+    games.value = res.data
+  } catch (err) {
+    console.error('Error fetching library:', err)
+  }
+}
+
+const formatDate = (isoDate) => {
+  const date = new Date(isoDate)
+  return date.toLocaleDateString()
+}
+
+onMounted(fetchLibrary)
+</script>
