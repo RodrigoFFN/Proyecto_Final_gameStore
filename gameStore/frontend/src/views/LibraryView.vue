@@ -39,3 +39,12 @@ const formatDate = (isoDate) => {
 
 onMounted(fetchLibrary)
 </script>
+
+<style scoped>
+h2 {
+  margin-bottom: 1rem;
+}
+li {
+  margin-bottom: 1rem;
+}
+</style>
