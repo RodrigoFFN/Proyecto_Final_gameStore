@@ -9,7 +9,25 @@
       </b-col>
     </b-row>
 
+    <b-row class="mb-4">
+      <b-col md="6">
+        <b-form-group label="Filtrar por categoría" label-for="category-select">
+          <b-form-select
+            id="category-select"
+            v-model="selectedCategory"
+            :options="categoryOptions"
+            class="mb-3"
+          ></b-form-select>
+        </b-form-group>
+      </b-col>
+    </b-row>
 
+    <b-row>
+      <b-col>
+        <h2 class="h4 mb-3">🎲 Juegos disponibles</h2>
+
+      </b-col>
+    </b-row>
   </b-container>
 </template>
 
