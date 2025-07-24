@@ -45,4 +45,14 @@ export function useGamesLogic() {
             console.error('Error fetching favorites:', err)
         }
     }
+
+    const fetchPurchasedGames = async () => {
+        if (!isAuthenticated.value) return
+        try {
+            const res = await api.get('api/library/')
+            purchasedGames.value = res.data
+        } catch (err) {
+            console.error('Error fetching purchased games:', err)
+        }
+    }
 }
