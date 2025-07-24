@@ -40,7 +40,21 @@
         lg="3"
         class="mb-4"
       >
+        <b-card
+          :title="game.title"
+          class="h-100"
+          :img-src="game.image_url"
+          img-alt="Game image"
+          img-top
+        >
+          <b-card-text class="mb-1">
+            {{ game.description }}
+          </b-card-text>
+          <p class="mb-1"><strong>💵 Precio:</strong> ${{ game.price }}</p>
+          <p class="mb-1"><strong>📂 Categoría:</strong> {{ game.category?.name }}</p>
+          <p class="mb-2"><strong>📅 Lanzamiento:</strong> {{ formatDate(game.release_date) }}</p>
 
+        </b-card>
       </b-col>
     </b-row>
   </b-container>
