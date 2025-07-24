@@ -70,4 +70,9 @@ export function useGamesLogic() {
     const isPurchased = (gameId) => {
         return purchasedGames.value.some(item => item.videogame?.id === gameId)
     }
+
+    const isFavorite = (gameId) => {
+        return favorites.value.some(fav =>
+            typeof fav.videogame === 'number' ? fav.videogame === gameId : fav.videogame?.id === gameId)
+    }
 }
