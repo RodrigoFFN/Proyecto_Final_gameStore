@@ -14,3 +14,19 @@
   </div>
 </template>
 
+<script>
+import api from '@/api/api'
+
+export default {
+  data() {
+    return {
+      games: [],
+      categoryId: this.$route.params.id
+    }
+  },
+  async created() {
+    const res = await api.get(`api/videogame/?category_id=${this.categoryId}`)
+    this.games = res.data
+  }
+}
+</script>
