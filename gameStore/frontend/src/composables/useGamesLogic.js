@@ -26,4 +26,13 @@ export function useGamesLogic() {
             loading.value = false
         }
     }
+
+    const loadCategories = async () => {
+        try {
+            const res = await api.get('api/category/')
+            categories.value = res.data
+        } catch (err) {
+            console.error('Error loading categories:', err)
+        }
+    }
 }
