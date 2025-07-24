@@ -56,6 +56,41 @@
 
           <router-link :to="`/game/${game.id}`" class="btn btn-link p-0">Detalles</router-link>
 
+          <div class="mt-3 d-grid gap-2">
+            <b-button
+              v-if="isAuthenticated && !isInCart(game.id) && !isPurchased(game.id)"
+              variant="primary"
+              @click="addToCart(game.id)"
+            >
+              Añadir al carrito
+            </b-button>
+
+            <b-alert
+              v-else-if="isAuthenticated && isPurchased(game.id)"
+              variant="success"
+              show
+              class="p-2 text-center"
+            >
+              ✅ Ya en tu biblioteca
+            </b-alert>
+
+            <b-alert
+              v-else-if="isAuthenticated && isInCart(game.id)"
+              variant="warning"
+              show
+              class="p-2 text-center"
+            >
+              🛒 Ya en tu carrito
+            </b-alert>
+
+            <b-button
+              v-if="isAuthenticated"
+              :variant="isFavorite(game.id) ? 'danger' : 'outline-danger'"
+              @click="toggleFavorite(game)"
+            >
+              {{ isFavorite(game.id) ? 'Quitar de Favoritos' : 'Añadir a Favoritos' }}
+            </b-button>
+          </div>
         </b-card>
       </b-col>
     </b-row>
