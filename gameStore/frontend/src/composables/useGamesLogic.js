@@ -75,4 +75,27 @@ export function useGamesLogic() {
         return favorites.value.some(fav =>
             typeof fav.videogame === 'number' ? fav.videogame === gameId : fav.videogame?.id === gameId)
     }
+
+    const toggleFavorite = async (game) => {
+        if (!isFavorite(game.id)) {
+            try {
+                const res = await api.post('api/favorites/', {
+                    videogame: game.id
+                })
+                favorites.value.push(res.data)
+                alert('Agregado a favoritos')
+            } catch (err) {
+                console.error('Error agregando favorito:', err)
+            }
+        } else {
+            try {
+                const fav = favorites.value.find(fav => fav.videogame === game.id)
+                await api.delete(`api/favorites/${fav.id}/`)
+                favorites.value = favorites.value.filter(f => f.id !== fav.id)
+                alert('Quitado de favoritos')
+            } catch (err) {
+                console.error('Error quitando favorito:', err)
+            }
+        }
+    }
 }
