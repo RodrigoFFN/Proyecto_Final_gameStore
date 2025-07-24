@@ -106,4 +106,20 @@ const auth = useAuthStore()
 const userName = auth.userProfile?.user?.username || ''
 const isAuthenticated = !!auth.accessToken
 
+const {
+  videogames,
+  filteredGames,
+  selectedCategory,
+  categories,
+  addToCart,
+  isInCart,
+  isPurchased,
+  isFavorite,
+  toggleFavorite,
+  fetchFavorites,
+  fetchPurchasedGames,
+  formatDate,
+  loading,
+} = useGamesLogic()
+
 </script>
