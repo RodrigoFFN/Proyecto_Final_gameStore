@@ -22,7 +22,15 @@
         <p v-if="successMessage" style="color: green;">{{ successMessage }}</p>
         <p v-if="errorMessage" style="color: red;">{{ errorMessage }}</p>
       </div>
-
+      <h2>🎮 Mis Favoritos</h2>
+      <ul v-if="favorites.length > 0">
+        <li v-for="fav in favorites" :key="fav.id">
+          <router-link :to="`/game/${fav.videogame}`">{{ fav.videogame_title }}</router-link>
+          <span v-if="fav.videogame_price"> - ${{ fav.videogame_price }}</span>
+          <button @click="removeFavorite(fav.id)" class="remove-fav">❌ Quitar</button>
+        </li>
+      </ul>
+      <p v-else>No tienes juegos en favoritos aún.</p>
     </div>
 
   </div>
