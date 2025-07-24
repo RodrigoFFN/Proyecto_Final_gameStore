@@ -43,6 +43,23 @@
       </li>
     </ul>
 
+    <div v-if="isAuthenticated" style="margin-top: 20px;">
+      <textarea
+        v-model="newReview"
+        placeholder="Write your review..."
+        rows="3"
+        style="width: 100%;"
+      ></textarea>
+      <br />
+      <select v-model="newRating">
+        <option disabled value="">Select rating</option>
+        <option v-for="n in 5" :key="n" :value="n">{{ n }}</option>
+      </select>
+      <button @click="submitReview" :disabled="!newReview.trim() || !newRating">Submit</button>
+    </div>
+    <div v-else>
+      <p><em>You must be logged in to write a review.</em></p>
+    </div>
   </div>
 
 </template>
