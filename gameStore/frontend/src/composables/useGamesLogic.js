@@ -112,4 +112,14 @@ export function useGamesLogic() {
         const date = new Date(dateStr)
         return date.toLocaleDateString()
     }
+
+    onMounted(() => {
+        loadGames()
+        loadCategories()
+        fetchFavorites()
+        fetchPurchasedGames()
+        if (isAuthenticated.value) {
+            cart.fetchCartItems()
+        }
+    })
 }
