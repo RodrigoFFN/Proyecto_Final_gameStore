@@ -66,4 +66,8 @@ export function useGamesLogic() {
     const isInCart = (gameId) => {
         return cartItems.value.some(item => item.videogame?.id === gameId)
     }
+
+    const isPurchased = (gameId) => {
+        return purchasedGames.value.some(item => item.videogame?.id === gameId)
+    }
 }
