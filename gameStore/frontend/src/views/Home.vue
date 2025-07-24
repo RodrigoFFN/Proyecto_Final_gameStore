@@ -102,4 +102,8 @@ import { useGamesLogic } from '@/composables/useGamesLogic'
 import { useAuthStore } from '@/store/auth'
 import { computed } from 'vue'
 
+const auth = useAuthStore()
+const userName = auth.userProfile?.user?.username || ''
+const isAuthenticated = !!auth.accessToken
+
 </script>
