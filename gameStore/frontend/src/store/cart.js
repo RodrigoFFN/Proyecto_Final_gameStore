@@ -29,6 +29,14 @@ export const useCartStore = defineStore('cart', {
         console.error('Error al agregar al carrito:', error)
       }
     },
+    async updateCartItem(itemId, quantity) {
+      try {
+        await api.put(`api/cartitem/${itemId}/`, { quantity })
+        this.fetchCartItems()
+      } catch (error) {
+        console.error('Error al actualizar el ítem del carrito:', error)
+      }
+    },
 
   },
 })
