@@ -5,4 +5,15 @@ import api from '@/api/api'
 import { fetchVideogames } from '@/api/videogames'
 
 export function useGamesLogic() {
+    const auth = useAuthStore()
+    const cart = useCartStore()
+    const isAuthenticated = computed(() => !!auth.accessToken)
+    const cartItems = computed(() => cart.cartItems)
+
+    const videogames = ref([])
+    const loading = ref(true)
+    const categories = ref([])
+    const selectedCategory = ref(null)
+    const favorites = ref([])
+    const purchasedGames = ref([])
 }
