@@ -35,4 +35,14 @@ export function useGamesLogic() {
             console.error('Error loading categories:', err)
         }
     }
+
+    const fetchFavorites = async () => {
+        if (!isAuthenticated.value) return
+        try {
+            const res = await api.get('api/favorites/')
+            favorites.value = res.data
+        } catch (err) {
+            console.error('Error fetching favorites:', err)
+        }
+    }
 }
