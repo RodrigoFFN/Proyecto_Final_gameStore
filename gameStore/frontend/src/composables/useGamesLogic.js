@@ -62,4 +62,8 @@ export function useGamesLogic() {
             game.category && game.category.id === selectedCategory.value
         )
     })
+
+    const isInCart = (gameId) => {
+        return cartItems.value.some(item => item.videogame?.id === gameId)
+    }
 }
