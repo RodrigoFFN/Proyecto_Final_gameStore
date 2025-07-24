@@ -122,4 +122,20 @@ export function useGamesLogic() {
             cart.fetchCartItems()
         }
     })
+
+    return {
+        videogames,
+        filteredGames,
+        selectedCategory,
+        categories,
+        addToCart,
+        isInCart,
+        isPurchased,
+        isFavorite,
+        toggleFavorite,
+        fetchFavorites,
+        fetchPurchasedGames,
+        formatDate,
+        loading
+    }
 }
