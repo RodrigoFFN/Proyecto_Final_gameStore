@@ -37,6 +37,13 @@ export const useCartStore = defineStore('cart', {
         console.error('Error al actualizar el ítem del carrito:', error)
       }
     },
-
+    async deleteCartItem(itemId) {
+      try {
+        await api.delete(`api/cartitem/${itemId}/`)
+        this.fetchCartItems()
+      } catch (error) {
+        console.error('Error al eliminar el ítem del carrito:', error)
+      }
+    },
   },
 })
