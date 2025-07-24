@@ -5,7 +5,7 @@ export const useAuthStore = defineStore('auth', {
   state: () => ({
     accessToken: localStorage.getItem('access') || null,
     refreshToken: localStorage.getItem('refresh') || null,
-    user: null
+    userProfile: null
   }),
 
   getters: {
@@ -25,7 +25,7 @@ export const useAuthStore = defineStore('auth', {
         api.defaults.headers.common['Authorization'] = `Bearer ${this.accessToken}`
 
         const profileRes = await api.get('api/my-profile/')
-        this.user = profileRes.data.user
+        this.userProfile = profileRes.data
 
         return true
       } catch (err) {
@@ -45,7 +45,7 @@ export const useAuthStore = defineStore('auth', {
 
         try {
           const profileRes = await api.get('api/my-profile/')
-          this.user = profileRes.data.user
+          this.userProfile = profileRes.data
         } catch (err) {
           console.error('Failed to load user profile:', err)
           this.logout()
@@ -56,18 +56,25 @@ export const useAuthStore = defineStore('auth', {
     logout() {
       this.accessToken = null
       this.refreshToken = null
-      this.user = null
+      this.userProfile = null
       localStorage.removeItem('access')
       localStorage.removeItem('refresh')
     },
 
-    handleLoginTokens({ access, refresh, username }) {
+    handleLoginTokens({ access, refresh }) {
       this.accessToken = access
       this.refreshToken = refresh
-      this.user = { username }
-
       localStorage.setItem('access', access)
       localStorage.setItem('refresh', refresh)
+    },
+    
+    async fetchUserProfile() {
+      try {
+        const res = await api.get('api/my-profile/')
+        this.userProfile = res.data
+      } catch (err) {
+      console.error('Failed to fetch user profile:', err)
+      }
     }
   }
 })
