@@ -16,4 +16,14 @@ export function useGamesLogic() {
     const selectedCategory = ref(null)
     const favorites = ref([])
     const purchasedGames = ref([])
+
+    const loadGames = async () => {
+        try {
+            videogames.value = await fetchVideogames()
+        } catch (err) {
+            console.error('Error fetching games:', err)
+        } finally {
+            loading.value = false
+        }
+    }
 }
