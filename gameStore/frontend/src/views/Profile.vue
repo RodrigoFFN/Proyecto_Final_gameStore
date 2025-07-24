@@ -66,3 +66,25 @@ const loadProfile = async () => {
     console.error('Error loading profile:', err)
   }
 }
+
+const rechargeBalance = async () => {
+  successMessage.value = ''
+  errorMessage.value = ''
+
+  if (!validAmount.value) {
+    errorMessage.value = 'Please enter a valid amount greater than 0.'
+    return
+  }
+
+  try {
+    await api.post('api/recharge/', {
+      amount: rechargeAmount.value
+    })
+    rechargeAmount.value = null
+    successMessage.value = 'Balance updated successfully.'
+    await loadProfile()
+  } catch (err) {
+    errorMessage.value = 'There was an error while recharging.'
+    console.error('Error recharging balance:', err)
+  }
+}
