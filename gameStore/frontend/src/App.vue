@@ -67,4 +67,14 @@ const logout = () => {
   margin: 0;
   font-size: 0.9rem;
 }
+
+.title-link {
+  color: #77d9ff;
+  text-decoration: none;
+  text-shadow: 1px 1px #111;
+}
+
+.title-link:hover {
+  color: #a0f0ff;
+}
 </style>
