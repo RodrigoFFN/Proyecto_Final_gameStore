@@ -1,48 +1,101 @@
 <!DOCTYPE html>
-<html>
+<html lang="es">
 <head>
-    <meta charset="utf-8">
-    <style>
-        body { font-family: Arial, sans-serif; }
-        h1 { text-align: center; }
-        .info { margin: 10px 0; }
-        .section { margin-bottom: 30px; }
-        table { width: 100%; border-collapse: collapse; }
-        th, td { border: 1px solid #000; padding: 8px; text-align: left; }
-        .right { text-align: right; }
-    </style>
+  <meta charset="utf-8">
+  <style>
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      background-color: #f5f7fa;
+      color: #333;
+      padding: 40px;
+    }
+
+    .boleta {
+      max-width: 700px;
+      margin: 0 auto;
+      background-color: #fff;
+      border-radius: 12px;
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+      padding: 30px;
+    }
+
+    h1, h2 {
+      text-align: center;
+      color: #2c3e50;
+      margin-bottom: 20px;
+    }
+
+    .info {
+      margin: 6px 0;
+      font-size: 0.95rem;
+    }
+
+    .section {
+      margin-bottom: 30px;
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: 10px;
+    }
+
+    th, td {
+      border: 1px solid #dcdde1;
+      padding: 10px;
+      text-align: left;
+    }
+
+    th {
+      background-color: #ecf0f1;
+      font-weight: 600;
+    }
+
+    .right {
+      text-align: right;
+    }
+
+    .total {
+      margin-top: 20px;
+      font-size: 1.1rem;
+      font-weight: bold;
+      color: #34495e;
+    }
+  </style>
 </head>
 <body>
-    <h1>Boleta de Compra</h1>
+  <div class="boleta">
+    <h1> Boleta de Compra</h1>
 
     <div class="section">
-        <p class="info"><strong>Usuario:</strong> {{ user.username }}</p>
-        <p class="info"><strong>Email:</strong> {{ user.email }}</p>
-        <p class="info"><strong>Dirección:</strong> {{ profile.address }}</p>
-        <p class="info"><strong>Teléfono:</strong> {{ profile.phone }}</p>
-        <p class="info"><strong>Fecha:</strong> {{ date }}</p>
+      <p class="info"><strong>Usuario:</strong> {{ user.username }}</p>
+      <p class="info"><strong>Email:</strong> {{ user.email }}</p>
+      <p class="info"><strong>Dirección:</strong> {{ profile.address }}</p>
+      <p class="info"><strong>Teléfono:</strong> {{ profile.phone }}</p>
+      <p class="info"><strong>Fecha:</strong> {{ date }}</p>
     </div>
 
-    <h2>Detalle de la Compra</h2>
+    <h2>🛍 Detalle de la Compra</h2>
     <table>
-        <thead>
-            <tr>
-                <th>Juego</th>
-                <th>Cantidad</th>
-                <th>Precio Unitario</th>
-            </tr>
-        </thead>
-        <tbody>
+      <thead>
+        <tr>
+          <th>Juego</th>
+          <th>Cantidad</th>
+          <th>Precio Unitario</th>
+        </tr>
+      </thead>
+      <tbody>
         {% for item in items %}
-            <tr>
-                <td>{{ item.videogame.title }}</td>
-                <td>{{ item.quantity }}</td>
-                <td>S/. {{ item.videogame.price }}</td>
-            </tr>
+          <tr>
+            <td>{{ item.videogame.title }}</td>
+            <td>{{ item.quantity }}</td>
+            <td>S/. {{ item.videogame.price }}</td>
+          </tr>
         {% endfor %}
-        </tbody>
+      </tbody>
     </table>
 
-    <p class="info right"><strong>Total a pagar:</strong> S/. {{ total|floatformat:2 }}</p>
+    <p class="total right">Total a pagar: S/. {{ total|floatformat:2 }}</p>
+  </div>
 </body>
 </html>
