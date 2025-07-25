@@ -41,7 +41,7 @@ const register = async () => {
   success.value = false
 
   try {
-    const response = await api.post('/api/register/', {
+    await api.post('/api/register/', {
       username: username.value,
       email: email.value,
       password: password.value,
@@ -50,21 +50,19 @@ const register = async () => {
       last_name: last_name.value
     })
 
+    const loggedIn = await authStore.login(username.value, password.value)
 
-    const { access, refresh } = response.data
-    authStore.handleLoginTokens({
-      access,
-      refresh,
-      username: username.value
-    })
-
-    success.value = true
-    router.push('/')
+    if (loggedIn) {
+      success.value = true
+      router.push('/')
+    } else {
+      error.value = 'Registro exitoso, pero el inicio de sesión falló.'
+    }
   } catch (err) {
     if (err.response?.data) {
       error.value = JSON.stringify(err.response.data)
     } else {
-      error.value = 'Error al registrar o autenticar usuario.'
+      error.value = 'Error al registrar usuario.'
     }
   }
 }
