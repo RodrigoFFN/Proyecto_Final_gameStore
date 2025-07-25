@@ -59,6 +59,7 @@ export const useAuthStore = defineStore('auth', {
       this.userProfile = null
       localStorage.removeItem('access')
       localStorage.removeItem('refresh')
+      delete api.defaults.headers.common['Authorization']
     },
 
     handleLoginTokens({ access, refresh }) {

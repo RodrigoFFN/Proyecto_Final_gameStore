@@ -6,15 +6,15 @@
       </h1>
       <nav class="nav-links">
         <router-link to="/categories">Categories</router-link>
-        <router-link v-if="!auth.isAuthenticated" to="/login">Login</router-link>
-        <router-link v-if="!auth.isAuthenticated" to="/register">Register</router-link>
+        <router-link v-if="!isAuthenticated" to="/login">Login</router-link>
+        <router-link v-if="!isAuthenticated" to="/register">Register</router-link>
 
-        <router-link v-if="auth.isAuthenticated" to="/profile">My Profile</router-link>
-        <router-link v-if="auth.isAuthenticated" to="/library">My Library</router-link>
-        <router-link v-if="auth.isAuthenticated" to="/cart">
+        <router-link v-if="isAuthenticated" to="/profile">My Profile</router-link>
+        <router-link v-if="isAuthenticated" to="/library">My Library</router-link>
+        <router-link v-if="isAuthenticated" to="/cart">
           Cart<span v-if="cart.totalItems > 0"> ({{ cart.totalItems }})</span>
         </router-link>
-        <button v-if="auth.isAuthenticated" class="logout-btn" @click="logout">Logout</button>
+        <button v-if="isAuthenticated" class="logout-btn" @click="logout">Logout</button>
       </nav>
     </header>
 
@@ -28,19 +28,27 @@
 import { useAuthStore } from '@/store/auth.js'
 import { useCartStore } from '@/store/cart.js'
 import { useRouter } from 'vue-router'
+import { computed, onMounted } from 'vue'
 
 const auth = useAuthStore()
 const cart = useCartStore()
 const router = useRouter()
 
-auth.loadFromStorage()
-if (auth.isAuthenticated) cart.fetchCartItems()
+const isAuthenticated = computed(() => auth.isAuthenticated)
+
+onMounted(async () => {
+  await auth.loadFromStorage()
+  if (auth.isAuthenticated) {
+    await cart.fetchCartItems()
+  }
+})
 
 const logout = () => {
   auth.logout()
   router.push('/')
 }
 </script>
+
 
 <style scoped>
 @import url('https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap');
