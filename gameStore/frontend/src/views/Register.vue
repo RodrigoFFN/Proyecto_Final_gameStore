@@ -98,4 +98,15 @@ h2 {
   flex-direction: column;
   gap: 1rem;
 }
+
+input {
+  padding: 0.75rem;
+  font-size: 0.7rem;
+  border-radius: 8px;
+  border: 1px solid #00ffee;
+  background-color: #121212;
+  color: #00ffee;
+  outline: none;
+  font-family: 'Press Start 2P', monospace;
+}
 </style>
