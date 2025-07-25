@@ -3,11 +3,13 @@
     <h2>My Profile</h2>
 
     <div v-if="user && profile">
-      <p><strong>Username:</strong> {{ user.username }}</p>
-      <p><strong>Email:</strong> {{ user.email }}</p>
-      <p v-if="profile.address"><strong>Address:</strong> {{ profile.address }}</p>
-      <p v-if="profile.phone"><strong>Phone:</strong> {{ profile.phone }}</p>
-      <p><strong>Balance:</strong> ${{ profile.balance }}</p>
+        <div class="profile-info">
+    <p><span>👤 Username:</span> {{ user.username }}</p>
+    <p><span>📧 Email:</span> {{ user.email }}</p>
+    <p v-if="profile.address"><span>🏠 Address:</span> {{ profile.address }}</p>
+    <p v-if="profile.phone"><span>📞 Phone:</span> {{ profile.phone }}</p>
+    <p><span>💰 Saldo:</span> ${{ profile.balance }}</p>
+  </div>
 
       <div style="margin-top: 20px;">
         <h3>Recharge Balance</h3>
@@ -212,4 +214,34 @@ a:hover {
   font-size: 0.7rem;
   margin-top: 0.5rem;
 }
+
+.profile-card {
+  background-color: #222;
+  padding: 1.5rem;
+  border-radius: 16px;
+  box-shadow: 0 0 15px #44f2ff33;
+  margin-bottom: 2rem;
+}
+
+.profile-info p {
+  margin: 0.5rem 0;
+  font-size: 0.75rem;
+  color: #e0f7fa;
+}
+
+.profile-info span {
+  color: #44f2ff;
+  font-weight: bold;
+}
+
+.profile-card input {
+  margin-top: 0.5rem;
+  margin-bottom: 0.5rem;
+  width: 150px;
+}
+
+.profile-card button {
+  margin-top: 0.5rem;
+}
+
 </style>
