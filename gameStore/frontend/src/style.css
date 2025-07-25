@@ -1,105 +1,89 @@
-<template>
-  <b-container class="py-5">
-    <b-row>
-      <b-col>
-        <h1 class="text-center text-info fw-bold mb-4" style="text-shadow: 2px 2px #000;">
-          🎮 Bienvenido a <span class="text-primary">ESGames</span>
-        </h1>
-        <div v-if="isAuthenticated" class="mb-4 h5 text-center">
-          ¡Hola de nuevo, <span class="text-danger fw-semibold">{{ userName }}</span>!
-        </div>
-      </b-col>
-    </b-row>
+@import url('https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap');
 
-    <b-row class="justify-content-center mb-5">
-      <b-col md="6">
-        <b-form-group label="Filtrar por categoría" label-for="category-select">
-          <b-form-select
-            id="category-select"
-            v-model="selectedCategory"
-            :options="categoryOptions"
-            class="form-select border-info text-light bg-dark"
-          ></b-form-select>
-        </b-form-group>
-      </b-col>
-    </b-row>
+:root {
+  --primary-color: #ff0055;
+  --secondary-color: #00ffee;
+  --bg-color: #121212;
+  --text-color: #f0f0f0;
+  --card-bg: #1e1e1e;
 
-    <b-row>
-      <b-col>
-        <h2 class="text-secondary text-center mb-4" style="font-family: 'Press Start 2P', monospace;">🎲 Juegos disponibles</h2>
-        <div v-if="loading" class="text-warning text-center">Cargando videojuegos...</div>
-        <div v-else-if="filteredGames.length === 0" class="text-danger text-center">No se encontraron videojuegos.</div>
-      </b-col>
-    </b-row>
+  font-family: 'Press Start 2P', monospace;
+  line-height: 1.5;
+  font-weight: 400;
 
-    <b-row>
-      <b-col
-        v-for="game in filteredGames"
-        :key="game.id"
-        cols="12"
-        sm="6"
-        md="4"
-        lg="3"
-        class="mb-5"
-      >
-        <b-card
-          :title="game.title"
-          :img-src="game.image_url"
-          img-alt="Game image"
-          img-top
-          class="h-100 text-light border border-info bg-dark shadow-lg"
-        >
-          <b-card-text class="text-muted small">
-            {{ game.description }}
-          </b-card-text>
+  color-scheme: dark;
+  color: var(--text-color);
+  background-color: var(--bg-color);
 
-          <p><strong>💵 Precio:</strong> ${{ game.price }}</p>
-          <p><strong>📂 Categoría:</strong> {{ game.category?.name }}</p>
-          <p><strong>📅 Lanzamiento:</strong> {{ formatDate(game.release_date) }}</p>
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
 
-          <router-link :to="`/game/${game.id}`" class="btn btn-link text-info p-0">
-            Detalles
-          </router-link>
+body {
+  margin: 0;
+  min-width: 320px;
+  min-height: 100vh;
+  background-color: var(--bg-color);
+  color: var(--text-color);
+}
 
-          <div class="mt-3 d-grid gap-2">
-            <b-button
-              v-if="isAuthenticated && !isInCart(game.id) && !isPurchased(game.id)"
-              variant="primary"
-              class="fw-bold"
-              @click="addToCart(game.id)"
-            >
-              Añadir al carrito
-            </b-button>
+a {
+  font-weight: 500;
+  color: var(--secondary-color);
+  text-decoration: none;
+}
+a:hover {
+  color: #66ffff;
+  text-shadow: 0 0 4px var(--secondary-color);
+}
 
-            <b-alert
-              v-else-if="isAuthenticated && isPurchased(game.id)"
-              variant="success"
-              show
-              class="p-2 text-center"
-            >
-              ✅ Ya en tu biblioteca
-            </b-alert>
+h1, h2, h3 {
+  text-shadow: 2px 2px #000;
+  color: var(--secondary-color);
+}
 
-            <b-alert
-              v-else-if="isAuthenticated && isInCart(game.id)"
-              variant="warning"
-              show
-              class="p-2 text-center"
-            >
-              🛒 Ya en tu carrito
-            </b-alert>
+button {
+  border-radius: 8px;
+  border: 1px solid var(--primary-color);
+  padding: 0.6em 1.2em;
+  font-size: 0.75em;
+  font-weight: bold;
+  font-family: inherit;
+  background-color: var(--primary-color);
+  color: white;
+  cursor: pointer;
+  transition: all 0.3s ease-in-out;
+}
+button:hover {
+  background-color: #ff3366;
+  box-shadow: 0 0 6px var(--primary-color);
+}
+button:focus,
+button:focus-visible {
+  outline: 3px solid var(--secondary-color);
+}
 
-            <b-button
-              v-if="isAuthenticated"
-              :variant="isFavorite(game.id) ? 'danger' : 'outline-danger'"
-              @click="toggleFavorite(game)"
-              class="fw-semibold"
-            >
-              {{ isFavorite(game.id) ? 'Quitar de Favoritos' : 'Añadir a Favoritos' }}
-            </b-button>
-          </div>
-        </b-card>
-      </b-col>
-    </b-row>
-  </b-container>
-</template>
+.card {
+  background-color: var(--card-bg);
+  border: 1px solid #333;
+  box-shadow: 0 0 10px #00ffee44;
+  border-radius: 16px;
+  padding: 1.5rem;
+  margin: 1rem auto;
+  text-align: center;
+}
+
+#app {
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 2rem;
+  text-align: center;
+}
+
+@media (max-width: 768px) {
+  :root {
+    font-size: 10px;
+  }
+}
