@@ -151,4 +151,21 @@ input {
   outline: none;
   margin-right: 0.5rem;
 }
+
+button {
+  padding: 0.5rem 1rem;
+  font-size: 0.7rem;
+  border: none;
+  border-radius: 6px;
+  background-color: #ff3366;
+  color: white;
+  font-family: 'Press Start 2P', monospace;
+  cursor: pointer;
+  transition: all 0.3s ease-in-out;
+}
+
+button:hover {
+  background-color: #ff5a7d;
+  box-shadow: 0 0 8px #ff336688;
+}
 </style>
