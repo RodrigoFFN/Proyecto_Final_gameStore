@@ -92,4 +92,10 @@ h2 {
   font-size: 1rem;
   text-shadow: 2px 2px #000;
 }
+
+.register-form {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
 </style>
