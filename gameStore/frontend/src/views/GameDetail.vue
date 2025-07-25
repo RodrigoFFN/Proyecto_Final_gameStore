@@ -16,7 +16,10 @@
         <p><strong>Release Date:</strong> {{ game.release_date }}</p>
       </div>
     </div>
-
+    <h1>
+    Descripcion
+    </h1>
+    
     <p class="description">{{ game.description }}</p>
 
     <hr />
