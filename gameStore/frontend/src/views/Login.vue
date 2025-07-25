@@ -1,10 +1,15 @@
 <template>
-  <form @submit.prevent="handleLogin">
-    <input v-model="username" placeholder="Usuario" />
-    <input v-model="password" type="password" placeholder="Contraseña" />
-    <button type="submit">Iniciar Sesión</button>
-  </form>
+  <div class="login-container">
+    <h2>Inicio de Sesión</h2>
+
+    <form @submit.prevent="handleLogin">
+      <input v-model="username" placeholder="Usuario" />
+      <input v-model="password" type="password" placeholder="Contraseña" />
+      <button type="submit">Iniciar Sesión</button>
+    </form>
+  </div>
 </template>
+
 
 <script setup>
 import { ref } from 'vue'
@@ -30,7 +35,7 @@ const handleLogin = async () => {
 <style scoped>
 @import url('https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap');
 
-form {
+.login-container {
   max-width: 400px;
   margin: 5rem auto;
   padding: 2rem;
@@ -38,12 +43,22 @@ form {
   border: 1px solid #44f2ff;
   border-radius: 12px;
   box-shadow: 0 0 12px #44f2ff33;
+  font-family: 'Press Start 2P', monospace;
+  color: #f0f0f0;
+  text-align: center;
+}
+
+h2 {
+  color: #44f2ff;
+  margin-bottom: 2rem;
+  font-size: 1rem;
+  text-shadow: 1px 1px #000;
+}
+
+form {
   display: flex;
   flex-direction: column;
   gap: 1.2rem;
-  font-family: 'Press Start 2P', monospace;
-  text-align: center;
-  color: #f0f0f0;
 }
 
 input {
