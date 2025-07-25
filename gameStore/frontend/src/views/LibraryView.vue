@@ -62,4 +62,19 @@ div {
   margin: 4rem auto;
   box-shadow: 0 0 10px #44f2ff33;
 }
+
+ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+li {
+  margin-bottom: 1.5rem;
+  padding: 1rem;
+  background-color: #1f1f1f;
+  border-left: 4px solid #44f2ff;
+  border-radius: 8px;
+  box-shadow: 0 0 6px #44f2ff22;
+}
 </style>
