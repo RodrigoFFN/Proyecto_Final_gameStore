@@ -26,7 +26,9 @@
 <script setup>
 import { ref, onMounted, computed } from 'vue'
 import api from '@/api/api'
+import { useAuthStore } from '@/store/auth'
 
+const auth = useAuthStore()
 const items = ref([])
 const successMessage = ref('')
 const errorMessage = ref('')
@@ -69,6 +71,8 @@ const checkout = async () => {
 
     fetchCartItems()
     successMessage.value = 'Compra exitosa. Se descargó tu boleta.'
+
+    await auth.fetchUserProfile()
 
   } catch (err) {
     errorMessage.value = err.response?.data?.error || 'Checkout failed.'
