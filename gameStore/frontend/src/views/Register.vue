@@ -127,4 +127,21 @@ button {
   transition: all 0.3s ease-in-out;
   font-family: 'Press Start 2P', monospace;
 }
+
+button:hover {
+  background-color: #ff3366;
+  box-shadow: 0 0 10px #ff0055;
+}
+
+.error-message {
+  color: #ff5555;
+  margin-top: 1rem;
+  font-size: 0.65rem;
+}
+
+.success-message {
+  color: #00ff88;
+  margin-top: 1rem;
+  font-size: 0.65rem;
+}
 </style>
