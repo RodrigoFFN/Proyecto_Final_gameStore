@@ -207,7 +207,7 @@ h2 {
 p {
   font-family: 'Press Start 2P', monospace;
   font-size: 0.7rem;
-  color: #000000ff;
+  color: #dfdfdfff;
   margin: 0.5rem 0;
 }
 
