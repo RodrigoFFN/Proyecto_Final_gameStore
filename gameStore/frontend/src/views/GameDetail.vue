@@ -209,4 +209,19 @@ img {
   box-shadow: 0 0 10px #44f2ff55;
   margin-bottom: 1rem;
 }
+
+textarea,
+input,
+select {
+  font-family: 'Press Start 2P', monospace;
+  font-size: 0.65rem;
+  padding: 0.5rem;
+  border-radius: 6px;
+  border: 1px solid #44f2ff;
+  background-color: #1f1f1f;
+  color: #cfffff;
+  margin: 0.3rem 0;
+  width: 100%;
+  box-sizing: border-box;
+}
 </style>
