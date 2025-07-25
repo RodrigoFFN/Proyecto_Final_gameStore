@@ -82,3 +82,71 @@ const total = computed(() =>
 
 onMounted(fetchCartItems)
 </script>
+
+<style scoped>
+@import url('https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap');
+
+h2 {
+  font-family: 'Press Start 2P', monospace;
+  color: #77d9ff;
+  font-size: 1rem;
+  margin-bottom: 1.5rem;
+  text-align: center;
+  text-shadow: 1px 1px #111;
+}
+
+div {
+  font-family: 'Press Start 2P', monospace;
+  font-size: 0.7rem;
+  color: #e0e0e0;
+  background-color: #2a2a2a;
+  border-radius: 12px;
+  padding: 2rem;
+  max-width: 700px;
+  margin: 4rem auto;
+  box-shadow: 0 0 6px #77d9ff22;
+}
+
+p {
+  margin: 0.8rem 0;
+}
+
+strong {
+  color: #ffaec9;
+}
+
+button {
+  font-family: inherit;
+  font-size: 0.7rem;
+  background-color: #3a3a3a;
+  color: #e0e0e0;
+  border: 1px solid #77d9ff;
+  padding: 0.5rem 1rem;
+  margin-top: 0.5rem;
+  margin-right: 0.5rem;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+}
+
+button:hover {
+  background-color: #444;
+  color: #a0f0ff;
+}
+
+button:disabled {
+  background-color: #555;
+  color: #999;
+  cursor: not-allowed;
+}
+
+.success-message {
+  color: #a4f9c8;
+  margin-top: 1rem;
+}
+
+.error-message {
+  color: #ff8a8a;
+  margin-top: 1rem;
+}
+</style>
