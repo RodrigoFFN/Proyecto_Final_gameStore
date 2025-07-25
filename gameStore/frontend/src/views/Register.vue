@@ -71,35 +71,19 @@ const register = async () => {
 </script>
 
 <style scoped>
+@import url('https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap');
+
 .register-container {
-  max-width: 400px;
-  margin: 0 auto;
+  max-width: 500px;
+  margin: 4rem auto;
   padding: 2rem;
+  background-color: #1c1c1c;
+  border: 2px solid #00ffee;
+  border-radius: 12px;
+  box-shadow: 0 0 20px #00ffee66;
+  font-family: 'Press Start 2P', monospace;
+  color: #f0f0f0;
+  text-align: center;
 }
 
-.register-form input {
-  display: block;
-  width: 100%;
-  margin-bottom: 1rem;
-  padding: 0.5rem;
-  font-size: 1rem;
-}
-
-button {
-  padding: 0.6rem 1.2rem;
-  background-color: #2e7d32;
-  color: white;
-  border: none;
-  cursor: pointer;
-}
-
-.error-message {
-  color: red;
-  margin-top: 1rem;
-}
-
-.success-message {
-  color: green;
-  margin-top: 1rem;
-}
 </style>
