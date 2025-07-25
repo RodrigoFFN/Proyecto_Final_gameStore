@@ -77,4 +77,21 @@ const logout = () => {
 .title-link:hover {
   color: #a0f0ff;
 }
+
+.nav-links {
+  display: flex;
+  align-items: center;
+  gap: 1.2rem;
+}
+
+.nav-links a {
+  color: #ffffffcc;
+  text-decoration: none;
+  transition: color 0.2s ease;
+}
+
+.nav-links a:hover {
+  color: #77d9ff;
+  text-shadow: 0 0 5px #77d9ff88;
+}
 </style>
