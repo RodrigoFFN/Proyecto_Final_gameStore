@@ -24,7 +24,7 @@
 
     <b-row>
       <b-col>
-        <h2 class="h4 mb-3">🎲 Juegos disponibles</h2>
+        <h2 class="h4 mb-3"> Juegos disponibles</h2>
         <div v-if="loading" class="text-warning">Cargando videojuegos...</div>
         <div v-else-if="filteredGames.length === 0" class="text-danger">No se encontraron videojuegos.</div>
       </b-col>

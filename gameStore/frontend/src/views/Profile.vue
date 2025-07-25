@@ -8,7 +8,7 @@
     <p><span>📧 Email:</span> {{ user.email }}</p>
     <p v-if="profile.address"><span>🏠 Address:</span> {{ profile.address }}</p>
     <p v-if="profile.phone"><span>📞 Phone:</span> {{ profile.phone }}</p>
-    <p><span>💰 Saldo:</span> ${{ profile.balance }}</p>
+    <p><span> Saldo:</span> ${{ profile.balance }}</p>
   </div>
 
       <div style="margin-top: 20px;">
