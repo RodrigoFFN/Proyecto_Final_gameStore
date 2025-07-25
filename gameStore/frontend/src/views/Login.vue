@@ -74,4 +74,9 @@ button {
   transition: all 0.3s ease-in-out;
   font-family: 'Press Start 2P', monospace;
 }
+
+button:hover {
+  background-color: #ff5a7d;
+  box-shadow: 0 0 8px #ff3366aa;
+}
 </style>
