@@ -94,4 +94,24 @@ const logout = () => {
   color: #77d9ff;
   text-shadow: 0 0 5px #77d9ff88;
 }
+
+.logout-btn {
+  background-color: transparent;
+  color: #ff8a8a;
+  border: 1px solid #ff8a8a88;
+  padding: 0.4rem 0.8rem;
+  border-radius: 6px;
+  font-family: inherit;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+}
+
+.logout-btn:hover {
+  background-color: #ff8a8a22;
+  color: #ffffff;
+}
+
+main {
+  padding: 2rem;
+}
 </style>
