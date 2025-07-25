@@ -132,4 +132,23 @@ h3 {
   font-size: 0.9rem;
   margin: 1.5rem 0 1rem;
 }
+
+p {
+  font-family: 'Press Start 2P', monospace;
+  font-size: 0.7rem;
+  color: #e0e0e0;
+  margin-bottom: 0.5rem;
+}
+
+input {
+  padding: 0.5rem;
+  font-size: 0.7rem;
+  border-radius: 6px;
+  border: 1px solid #44f2ff;
+  background-color: #1f1f1f;
+  color: #cfffff;
+  font-family: 'Press Start 2P', monospace;
+  outline: none;
+  margin-right: 0.5rem;
+}
 </style>
