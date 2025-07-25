@@ -116,10 +116,20 @@ onMounted(() => {
 </script>
 
 <style scoped>
+@import url('https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap');
+
 h2 {
+  font-family: 'Press Start 2P', monospace;
+  color: #44f2ff;
+  text-shadow: 1px 1px #000;
   margin-bottom: 1rem;
+  font-size: 1rem;
 }
-p {
-  margin: 0.5rem 0;
+
+h3 {
+  font-family: 'Press Start 2P', monospace;
+  color: #ff5a7d;
+  font-size: 0.9rem;
+  margin: 1.5rem 0 1rem;
 }
 </style>
