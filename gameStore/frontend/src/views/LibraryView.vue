@@ -54,7 +54,7 @@ h2 {
 div {
   font-family: 'Press Start 2P', monospace;
   font-size: 0.7rem;
-  color: #e0e0e0;
+  color: #000000ff;
   padding: 2rem;
   background-color: #2b2b2b;
   border-radius: 12px;
