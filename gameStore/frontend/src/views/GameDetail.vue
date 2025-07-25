@@ -279,4 +279,16 @@ em {
   font-size: 0.6rem;
   color: #ff9999;
 }
+
+.description {
+  background-color: #222;
+  padding: 1rem;
+  border-radius: 10px;
+  box-shadow: 0 0 10px #44f2ff44;
+  font-size: 0.7rem;
+  color: #e0f7fa;
+  line-height: 1.5;
+  margin-top: 1rem;
+  font-family: 'Press Start 2P', monospace;
+}
 </style>
