@@ -56,11 +56,11 @@ div {
   font-size: 0.7rem;
   color: #000000ff;
   padding: 2rem;
-  background-color: #2b2b2b;
+  background-color: #5b5b5bff;
   border-radius: 12px;
   max-width: 700px;
   margin: 4rem auto;
-  box-shadow: 0 0 10px #44f2ff33;
+  box-shadow: 0 0 10px #6ff5ff81;
 }
 
 ul {
@@ -84,7 +84,7 @@ strong {
 
 small {
   font-size: 0.6rem;
-  color: #a0a0a0;
+  color: #2d2c2cff;
   display: block;
   margin-top: 0.3rem;
 }
