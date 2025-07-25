@@ -125,7 +125,7 @@ onMounted(() => {
 h2 {
   font-family: 'Press Start 2P', monospace;
   color: #44f2ff;
-  text-shadow: 1px 1px #000;
+  text-shadow: 1px 1px #ffffff;
   margin-bottom: 1rem;
   font-size: 1rem;
 }
