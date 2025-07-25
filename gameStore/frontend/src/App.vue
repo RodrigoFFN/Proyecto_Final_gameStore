@@ -1,14 +1,20 @@
 <template>
   <div id="app">
-    <header>
-      <h1>
-      <router-link to="/" class="title-link">GameStore</router-link>
+    <header class="navbar">
+      <h1 class="title">
+        <router-link to="/" class="title-link">GameStore</router-link>
       </h1>
-      <nav>
+      <nav class="nav-links">
+        <router-link to="/categories">Categories</router-link>
         <router-link v-if="!auth.isAuthenticated" to="/login">Login</router-link>
         <router-link v-if="!auth.isAuthenticated" to="/register">Register</router-link>
+
         <router-link v-if="auth.isAuthenticated" to="/profile">My Profile</router-link>
-        <button v-if="auth.isAuthenticated" @click="logout">Logout</button>
+        <router-link v-if="auth.isAuthenticated" to="/library">My Library</router-link>
+        <router-link v-if="auth.isAuthenticated" to="/cart">
+          Cart<span v-if="cart.totalItems > 0"> ({{ cart.totalItems }})</span>
+        </router-link>
+        <button v-if="auth.isAuthenticated" class="logout-btn" @click="logout">Logout</button>
       </nav>
     </header>
 
