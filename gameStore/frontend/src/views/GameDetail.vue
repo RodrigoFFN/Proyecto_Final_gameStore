@@ -177,3 +177,24 @@ onMounted(() => {
   fetchReviews()
 })
 </script>
+
+<style scoped>
+@import url('https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap');
+
+h1 {
+  font-family: 'Press Start 2P', monospace;
+  color: #44f2ff;
+  font-size: 1rem;
+  margin-bottom: 1rem;
+  text-shadow: 1px 1px #000;
+}
+
+h2 {
+  font-family: 'Press Start 2P', monospace;
+  font-size: 0.9rem;
+  color: #ff5a7d;
+  margin-top: 2rem;
+  margin-bottom: 1rem;
+}
+
+</style>
