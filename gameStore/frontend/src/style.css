@@ -46,14 +46,15 @@ h1, h2, h3 {
 
 button {
   border-radius: 8px;
-  border: 1px solid transparent;
+  border: 1px solid var(--primary-color);
   padding: 0.6em 1.2em;
-  font-size: 1em;
-  font-weight: 500;
+  font-size: 0.75em;
+  font-weight: bold;
   font-family: inherit;
-  background-color: #1a1a1a;
+  background-color: var(--primary-color);
+  color: white;
   cursor: pointer;
-  transition: border-color 0.25s;
+  transition: all 0.3s ease-in-out;
 }
 button:hover {
   border-color: #646cff;
