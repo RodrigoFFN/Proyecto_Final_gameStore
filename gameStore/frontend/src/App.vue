@@ -2,7 +2,7 @@
   <div id="app">
     <header class="navbar">
       <h1 class="title">
-        <router-link to="/" class="title-link">GameStore</router-link>
+        <router-link to="/" class="title-link">ESGames</router-link>
       </h1>
       <nav class="nav-links">
         <router-link to="/categories">Categories</router-link>
@@ -26,12 +26,15 @@
 
 <script setup>
 import { useAuthStore } from '@/store/auth.js'
+import { useCartStore } from '@/store/cart.js'
 import { useRouter } from 'vue-router'
 
 const auth = useAuthStore()
+const cart = useCartStore()
 const router = useRouter()
 
 auth.loadFromStorage()
+if (auth.isAuthenticated) cart.fetchCartItems()
 
 const logout = () => {
   auth.logout()
