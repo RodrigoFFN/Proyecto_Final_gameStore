@@ -132,3 +132,82 @@ const categoryOptions = computed(() => {
   return options
 })
 </script>
+
+<style scoped>
+@import url('https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap');
+
+h1 {
+  font-family: 'Press Start 2P', monospace;
+  font-size: 1.5rem;
+  color: #00ffee;
+  text-shadow: 2px 2px #000;
+}
+
+h2 {
+  font-family: 'Press Start 2P', monospace;
+  font-size: 1.1rem;
+  color: #00ffee;
+  text-shadow: 1px 1px #000;
+}
+
+#category-select {
+  background-color: #1e1e1e;
+  color: #00ffee;
+  border: 1px solid #00ffee;
+}
+
+.card {
+  background-color: #1c1c1c !important;
+  border: 1px solid #00ffee !important;
+  box-shadow: 0 0 12px #00ffee44;
+  color: #f0f0f0;
+}
+
+.btn-primary {
+  background-color: #ff0055;
+  border: none;
+  font-weight: bold;
+  box-shadow: 0 0 5px #ff0055;
+}
+
+.btn-primary:hover {
+  background-color: #ff3366;
+  box-shadow: 0 0 10px #ff0055;
+}
+
+.btn-link {
+  color: #00ffee;
+  font-weight: bold;
+  padding: 0;
+}
+.btn-link:hover {
+  color: #66ffff;
+  text-shadow: 0 0 4px #00ffee;
+}
+
+.alert-success {
+  background-color: #003300;
+  color: #00ff99;
+  border-color: #00ff99;
+}
+
+.alert-warning {
+  background-color: #333300;
+  color: #ffff66;
+  border-color: #cccc00;
+}
+
+.btn-outline-danger {
+  border: 2px solid #ff0055;
+  color: #ff0055;
+  font-weight: bold;
+}
+.btn-outline-danger:hover {
+  background-color: #ff0055;
+  color: white;
+}
+
+.btn-danger {
+  font-weight: bold;
+}
+</style>
