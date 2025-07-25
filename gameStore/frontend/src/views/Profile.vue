@@ -198,4 +198,16 @@ a:hover {
   color: #88ffff;
   text-shadow: 0 0 4px #44f2ff;
 }
+
+.success-message {
+  color: #66ffcc;
+  font-size: 0.7rem;
+  margin-top: 0.5rem;
+}
+
+.error-message {
+  color: #ff7777;
+  font-size: 0.7rem;
+  margin-top: 0.5rem;
+}
 </style>
