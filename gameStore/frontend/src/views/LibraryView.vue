@@ -41,10 +41,25 @@ onMounted(fetchLibrary)
 </script>
 
 <style scoped>
+@import url('https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap');
+
 h2 {
-  margin-bottom: 1rem;
+  font-family: 'Press Start 2P', monospace;
+  color: #44f2ff;
+  font-size: 1rem;
+  margin-bottom: 1.5rem;
+  text-shadow: 1px 1px #000;
 }
-li {
-  margin-bottom: 1rem;
+
+div {
+  font-family: 'Press Start 2P', monospace;
+  font-size: 0.7rem;
+  color: #e0e0e0;
+  padding: 2rem;
+  background-color: #2b2b2b;
+  border-radius: 12px;
+  max-width: 700px;
+  margin: 4rem auto;
+  box-shadow: 0 0 10px #44f2ff33;
 }
 </style>
