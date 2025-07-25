@@ -259,4 +259,17 @@ li {
   border-radius: 8px;
   border-left: 3px solid #44f2ff;
 }
+
+small {
+  font-size: 0.6rem;
+  color: #aaa;
+  display: block;
+  margin-top: 0.3rem;
+}
+
+em {
+  font-family: 'Press Start 2P', monospace;
+  font-size: 0.6rem;
+  color: #ff9999;
+}
 </style>
