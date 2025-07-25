@@ -197,4 +197,16 @@ h2 {
   margin-bottom: 1rem;
 }
 
+p {
+  font-family: 'Press Start 2P', monospace;
+  font-size: 0.7rem;
+  color: #e0e0e0;
+  margin: 0.5rem 0;
+}
+
+img {
+  border-radius: 8px;
+  box-shadow: 0 0 10px #44f2ff55;
+  margin-bottom: 1rem;
+}
 </style>
