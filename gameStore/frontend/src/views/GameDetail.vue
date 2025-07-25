@@ -224,4 +224,23 @@ select {
   width: 100%;
   box-sizing: border-box;
 }
+
+button {
+  font-family: 'Press Start 2P', monospace;
+  font-size: 0.65rem;
+  padding: 0.4rem 0.8rem;
+  border: none;
+  border-radius: 6px;
+  background-color: #ff3366;
+  color: white;
+  cursor: pointer;
+  margin-top: 0.5rem;
+  transition: all 0.3s ease-in-out;
+  margin-right: 0.3rem;
+}
+
+button:hover {
+  background-color: #ff5a7d;
+  box-shadow: 0 0 8px #ff336688;
+}
 </style>
