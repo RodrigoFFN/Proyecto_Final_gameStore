@@ -53,4 +53,18 @@ const logout = () => {
   font-size: 0.7rem;
 }
 
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: #2a2a2a;
+  padding: 1rem 2rem;
+  box-shadow: 0 0 8px #77d9ff44;
+  border-bottom: 2px solid #77d9ff22;
+}
+
+.title {
+  margin: 0;
+  font-size: 0.9rem;
+}
 </style>
