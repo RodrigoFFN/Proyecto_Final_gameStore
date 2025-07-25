@@ -26,3 +26,23 @@ const handleLogin = async () => {
   }
 }
 </script>
+
+<style scoped>
+@import url('https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap');
+
+form {
+  max-width: 400px;
+  margin: 5rem auto;
+  padding: 2rem;
+  background-color: #2b2b2b;
+  border: 1px solid #44f2ff;
+  border-radius: 12px;
+  box-shadow: 0 0 12px #44f2ff33;
+  display: flex;
+  flex-direction: column;
+  gap: 1.2rem;
+  font-family: 'Press Start 2P', monospace;
+  text-align: center;
+  color: #f0f0f0;
+}
+</style>
