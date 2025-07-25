@@ -8,7 +8,7 @@
     <p><span>📧 Email:</span> {{ user.email }}</p>
     <p v-if="profile.address"><span>🏠 Address:</span> {{ profile.address }}</p>
     <p v-if="profile.phone"><span>📞 Phone:</span> {{ profile.phone }}</p>
-    <p><span> Saldo:</span> ${{ profile.balance }}</p>
+    <p><span>Saldo:</span> ${{ profile.balance }}</p>
   </div>
 
       <div style="margin-top: 20px;">
@@ -45,6 +45,7 @@
 <script setup>
 import { ref, onMounted, computed } from 'vue'
 import api from '@/api/api'
+import { useAuthStore } from '@/store/auth.js'
 
 const user = ref(null)
 const profile = ref(null)
@@ -52,6 +53,7 @@ const rechargeAmount = ref(null)
 const favorites = ref([])
 const successMessage = ref('')
 const errorMessage = ref('')
+const auth = useAuthStore()
 
 const validAmount = computed(() => {
   return rechargeAmount.value && rechargeAmount.value > 0
@@ -87,6 +89,7 @@ const rechargeBalance = async () => {
     rechargeAmount.value = null
     successMessage.value = 'Balance updated successfully.'
     await loadProfile()
+    await auth.fetchUserProfile()
   } catch (err) {
     errorMessage.value = 'There was an error while recharging.'
     console.error('Error recharging balance:', err)
