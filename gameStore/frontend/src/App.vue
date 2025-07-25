@@ -43,39 +43,53 @@ const logout = () => {
 </script>
 
 <style scoped>
-#app {
-  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-  padding: 20px;
-}
-
-header {
+.navbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
   background-color: #222;
-  color: white;
-  padding: 1rem;
-  text-align: center;
+  color: #fff;
+  padding: 1rem 2rem;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
 }
 
-nav {
-  margin-top: 0.5rem;
+.title {
+  margin: 0;
+  font-size: 1.5rem;
 }
 
-nav a,
-nav button {
-  margin: 0 0.5rem;
-  color: white;
+.title-link {
   text-decoration: none;
-  background: none;
-  border: none;
-  cursor: pointer;
-  font-weight: bold;
+  color: #fff;
 }
 
-nav button:hover,
-nav a:hover {
+.nav-links {
+  display: flex;
+  gap: 1rem;
+  align-items: center;
+}
+
+.nav-links a {
+  color: #fff;
+  text-decoration: none;
+  font-weight: 500;
+}
+
+.nav-links a:hover {
   text-decoration: underline;
 }
 
-main {
-  margin-top: 2rem;
+.logout-btn {
+  background: transparent;
+  border: 1px solid #fff;
+  color: #fff;
+  padding: 0.3rem 0.7rem;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.logout-btn:hover {
+  background-color: #fff;
+  color: #222;
 }
 </style>
