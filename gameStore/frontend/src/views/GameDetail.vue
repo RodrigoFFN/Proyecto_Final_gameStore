@@ -7,11 +7,17 @@
       </span>
     </h1>
 
-    <img :src="game.image_url" alt="Game Image" style="max-width: 300px;" />
+    <div style="display: flex; gap: 2rem; flex-wrap: wrap; align-items: flex-start; margin-bottom: 1rem;">
+      <img :src="game.image_url" alt="Game Image" style="max-width: 300px;" />
+
+      <div style="flex: 1;">
+        <p><strong>Price:</strong> ${{ game.price }}</p>
+        <p><strong>Category:</strong> {{ game.category?.name || 'Uncategorized' }}</p>
+        <p><strong>Release Date:</strong> {{ game.release_date }}</p>
+      </div>
+    </div>
+
     <p>{{ game.description }}</p>
-    <p><strong>Price:</strong> ${{ game.price }}</p>
-    <p><strong>Category:</strong> {{ game.category?.name || 'Uncategorized' }}</p>
-    <p><strong>Release Date:</strong> {{ game.release_date }}</p>
 
     <hr />
 
@@ -66,6 +72,7 @@
     <p>Loading game details...</p>
   </div>
 </template>
+
 
 <script setup>
 import { ref, onMounted, computed } from 'vue'
