@@ -168,4 +168,16 @@ button:hover {
   background-color: #ff5a7d;
   box-shadow: 0 0 8px #ff336688;
 }
+
+.remove-fav {
+  margin-left: 0.5rem;
+  background-color: transparent;
+  color: #ff4444;
+  border: 1px solid #ff4444;
+}
+
+.remove-fav:hover {
+  background-color: #ff4444;
+  color: white;
+}
 </style>
