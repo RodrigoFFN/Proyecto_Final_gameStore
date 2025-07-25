@@ -48,7 +48,7 @@
           img-top
         >
           <b-card-text class="mb-1">
-            {{ game.description }}
+            
           </b-card-text>
           <p class="mb-1"><strong>💵 Precio:</strong> ${{ game.price }}</p>
           <p class="mb-1"><strong>📂 Categoría:</strong> {{ game.category?.name }}</p>
