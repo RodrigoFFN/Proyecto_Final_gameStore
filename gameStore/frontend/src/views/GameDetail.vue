@@ -17,7 +17,7 @@
       </div>
     </div>
 
-    <p>{{ game.description }}</p>
+    <p class="description">{{ game.description }}</p>
 
     <hr />
 
