@@ -243,4 +243,20 @@ button:hover {
   background-color: #ff5a7d;
   box-shadow: 0 0 8px #ff336688;
 }
+
+ul {
+  padding-left: 1rem;
+  font-family: 'Press Start 2P', monospace;
+  font-size: 0.65rem;
+  color: #d0f0ff;
+  list-style: none;
+}
+
+li {
+  margin-bottom: 1rem;
+  padding: 0.5rem;
+  background-color: #2b2b2b;
+  border-radius: 8px;
+  border-left: 3px solid #44f2ff;
+}
 </style>
