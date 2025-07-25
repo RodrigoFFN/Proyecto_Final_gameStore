@@ -180,4 +180,22 @@ button:hover {
   background-color: #ff4444;
   color: white;
 }
+
+ul {
+  list-style: none;
+  padding-left: 0;
+  font-family: 'Press Start 2P', monospace;
+  font-size: 0.7rem;
+  color: #cfffff;
+}
+
+a {
+  color: #44f2ff;
+  text-decoration: none;
+}
+
+a:hover {
+  color: #88ffff;
+  text-shadow: 0 0 4px #44f2ff;
+}
 </style>
