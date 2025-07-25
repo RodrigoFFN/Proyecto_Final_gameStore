@@ -45,4 +45,15 @@ form {
   text-align: center;
   color: #f0f0f0;
 }
+
+input {
+  padding: 0.75rem;
+  font-size: 0.7rem;
+  border-radius: 8px;
+  border: 1px solid #44f2ff;
+  background-color: #1f1f1f;
+  color: #cfffff;
+  font-family: 'Press Start 2P', monospace;
+  outline: none;
+}
 </style>
