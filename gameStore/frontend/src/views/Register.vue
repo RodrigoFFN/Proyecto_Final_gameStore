@@ -109,4 +109,22 @@ input {
   outline: none;
   font-family: 'Press Start 2P', monospace;
 }
+
+input::placeholder {
+  color: #66ffff;
+  opacity: 0.6;
+}
+
+button {
+  padding: 0.75rem;
+  font-size: 0.8rem;
+  border: none;
+  border-radius: 8px;
+  background-color: #ff0055;
+  color: white;
+  font-weight: bold;
+  cursor: pointer;
+  transition: all 0.3s ease-in-out;
+  font-family: 'Press Start 2P', monospace;
+}
 </style>
