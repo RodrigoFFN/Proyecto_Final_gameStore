@@ -57,12 +57,14 @@ button {
   transition: all 0.3s ease-in-out;
 }
 button:hover {
-  border-color: #646cff;
+  background-color: #ff3366;
+  box-shadow: 0 0 6px var(--primary-color);
 }
 button:focus,
 button:focus-visible {
-  outline: 4px auto -webkit-focus-ring-color;
+  outline: 3px solid var(--secondary-color);
 }
+
 
 .card {
   padding: 2em;
