@@ -86,4 +86,10 @@ const register = async () => {
   text-align: center;
 }
 
+h2 {
+  color: #00ffee;
+  margin-bottom: 2rem;
+  font-size: 1rem;
+  text-shadow: 2px 2px #000;
+}
 </style>
