@@ -43,53 +43,14 @@ const logout = () => {
 </script>
 
 <style scoped>
-.navbar {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  background-color: #222;
-  color: #fff;
-  padding: 1rem 2rem;
-  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+@import url('https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap');
+
+#app {
+  background-color: #1e1e1e;
+  min-height: 100vh;
+  color: #e0e0e0;
+  font-family: 'Press Start 2P', monospace;
+  font-size: 0.7rem;
 }
 
-.title {
-  margin: 0;
-  font-size: 1.5rem;
-}
-
-.title-link {
-  text-decoration: none;
-  color: #fff;
-}
-
-.nav-links {
-  display: flex;
-  gap: 1rem;
-  align-items: center;
-}
-
-.nav-links a {
-  color: #fff;
-  text-decoration: none;
-  font-weight: 500;
-}
-
-.nav-links a:hover {
-  text-decoration: underline;
-}
-
-.logout-btn {
-  background: transparent;
-  border: 1px solid #fff;
-  color: #fff;
-  padding: 0.3rem 0.7rem;
-  border-radius: 4px;
-  cursor: pointer;
-}
-
-.logout-btn:hover {
-  background-color: #fff;
-  color: #222;
-}
 </style>
