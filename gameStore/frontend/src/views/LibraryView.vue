@@ -45,22 +45,22 @@ onMounted(fetchLibrary)
 
 h2 {
   font-family: 'Press Start 2P', monospace;
-  color: #44f2ff;
+  color: #77d9ff;
   font-size: 1rem;
   margin-bottom: 1.5rem;
-  text-shadow: 1px 1px #000;
+  text-shadow: 1px 1px #111;
 }
 
 div {
   font-family: 'Press Start 2P', monospace;
   font-size: 0.7rem;
-  color: #000000ff;
+  color: #dcdcdc;
   padding: 2rem;
-  background-color: #5b5b5bff;
+  background-color: #2a2a2a;
   border-radius: 12px;
   max-width: 700px;
   margin: 4rem auto;
-  box-shadow: 0 0 10px #6ff5ff81;
+  box-shadow: 0 0 6px #77d9ff22;
 }
 
 ul {
@@ -72,20 +72,20 @@ ul {
 li {
   margin-bottom: 1.5rem;
   padding: 1rem;
-  background-color: #1f1f1f;
-  border-left: 4px solid #44f2ff;
+  background-color: #202020;
+  border-left: 4px solid #77d9ff;
   border-radius: 8px;
-  box-shadow: 0 0 6px #44f2ff22;
+  box-shadow: 0 0 4px #77d9ff22;
 }
 
 strong {
-  color: #ff5a7d;
+  color: #ffaec9;
 }
 
 small {
   font-size: 0.6rem;
-  color: #2d2c2cff;
+  color: #aaa;
   display: block;
-  margin-top: 0.3rem;
+  margin-top: 0.4rem;
 }
 </style>
