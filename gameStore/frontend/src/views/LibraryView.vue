@@ -77,4 +77,15 @@ li {
   border-radius: 8px;
   box-shadow: 0 0 6px #44f2ff22;
 }
+
+strong {
+  color: #ff5a7d;
+}
+
+small {
+  font-size: 0.6rem;
+  color: #a0a0a0;
+  display: block;
+  margin-top: 0.3rem;
+}
 </style>
