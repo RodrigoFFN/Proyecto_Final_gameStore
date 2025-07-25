@@ -14,6 +14,9 @@
         <router-link v-if="isAuthenticated" to="/cart">
           Cart<span v-if="cart.totalItems > 0"> ({{ cart.totalItems }})</span>
         </router-link>
+        <span v-if="isAuthenticated" class="balance">
+          Balance: ${{ userBalance }}
+        </span>
         <button v-if="isAuthenticated" class="logout-btn" @click="logout">Logout</button>
       </nav>
     </header>
@@ -35,6 +38,7 @@ const cart = useCartStore()
 const router = useRouter()
 
 const isAuthenticated = computed(() => auth.isAuthenticated)
+const userBalance = computed(() => auth.userProfile?.balance || 0)
 
 onMounted(async () => {
   await auth.loadFromStorage()
@@ -101,6 +105,12 @@ const logout = () => {
 .nav-links a:hover {
   color: #77d9ff;
   text-shadow: 0 0 5px #77d9ff88;
+}
+
+.balance {
+  color: #00ff00;
+  font-weight: bold;
+  margin-left: 1rem;
 }
 
 .logout-btn {
