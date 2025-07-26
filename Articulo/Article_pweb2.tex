@@ -46,7 +46,7 @@ fjimenezp@unsa.edu.pe}
 \maketitle
 
 \begin{abstract}
-This paper presents the design and development of GameStore, a web-based platform intended to simulate the operation of a digital video game store. The system is structured using a client-server architecture, with Django employed for backend development and Vue.js for frontend implementation. The application allows users to register, log in, browse a catalog of video games, add products to a shopping cart, and manage a personal library of purchased titles. Additional features include user balance management, game reviews, ratings, and favorites, aiming to improve user interaction and engagement. The system implements a RESTful API to ensure efficient communication between client and server, facilitating modularity and scalability. 
+This paper presents the design and development of ESGame, a web-based platform intended to simulate the operation of a digital video game store. The system is structured using a client-server architecture, with Django employed for backend development and Vue.js for frontend implementation. The application allows users to register, log in, browse a catalog of video games, add products to a shopping cart, and manage a personal library of purchased titles. Additional features include user balance management, game reviews, ratings, and favorites, aiming to improve user interaction and engagement. The system implements a RESTful API to ensure efficient communication between client and server, facilitating modularity and scalability. 
 \end{abstract}
 
 \begin{IEEEkeywords}
@@ -56,11 +56,11 @@ Video game store, web development, Django, Vue.js, REST API.
 \section{Introduccion}
 El crecimiento sostenido del comercio electrónico ha transformado la manera en que los usuarios acceden y consumen productos digitales, incluyendo los videojuegos. En este contexto, las plataformas en línea han adquirido una relevancia fundamental al permitir la distribución eficiente de títulos, la gestión de bibliotecas personales y la interacción entre usuarios mediante reseñas y valoraciones.
 
-El presente trabajo describe el desarrollo de GameStore, una aplicación web que simula una tienda digital de videojuegos. La plataforma permite a los usuarios registrarse, iniciar sesión, explorar un catálogo de juegos, añadir productos a un carrito de compras y adquirirlos utilizando un sistema de saldo virtual. Asimismo, el sistema ofrece funcionalidades complementarias como la biblioteca de juegos adquiridos, el sistema de favoritos, y módulos para realizar valoraciones y comentarios.
+El presente trabajo describe el desarrollo de ESGame, una aplicación web que simula una tienda digital de videojuegos. La plataforma permite a los usuarios registrarse, iniciar sesión, explorar un catálogo de juegos, añadir productos a un carrito de compras y adquirirlos utilizando un sistema de saldo virtual. Asimismo, el sistema ofrece funcionalidades complementarias como la biblioteca de juegos adquiridos, el sistema de favoritos, y módulos para realizar valoraciones y comentarios.
 
 Para la implementación se empleó una arquitectura cliente-servidor, donde el backend fue desarrollado con Django, un framework robusto basado en el patrón modelo-vista-controlador (MVC), ampliamente utilizado en aplicaciones web modernas por su seguridad y escalabilidad [1]. El frontend se desarrolló utilizando Vue.js, un framework progresivo de JavaScript orientado a componentes, que permite construir interfaces reactivas bajo el paradigma de aplicaciones de una sola página (SPA, por sus siglas en inglés) [2].
 
-El desarrollo de GameStore busca demostrar la viabilidad de construir plataformas especializadas de comercio digital utilizando tecnologías web modernas, priorizando aspectos como modularidad, rendimiento y experiencia de usuario.
+El desarrollo de ESGame busca demostrar la viabilidad de construir plataformas especializadas de comercio digital utilizando tecnologías web modernas, priorizando aspectos como modularidad, rendimiento y experiencia de usuario.
  
 \section{Marco Teorico}
 El desarrollo de aplicaciones web modernas requiere el uso de herramientas y marcos que permitan separar responsabilidades, garantizar la escalabilidad del sistema y mejorar la experiencia del usuario final. En este proyecto se utilizaron tecnologías ampliamente adoptadas en la industria como Django, Vue.js, y la arquitectura basada en API REST. A continuación, se detallan los fundamentos teóricos y tecnológicos empleados.
@@ -80,7 +80,7 @@ La arquitectura cliente-servidor divide la lógica del sistema entre dos capas p
 
 \subsection{Backend}
 
-El backend de GameStore fue desarrollado utilizando el framework Django, y se encarga de gestionar la lógica de negocio, la autenticación de usuarios y la comunicación con la base de datos alojada en Supabase. A pesar de que Django proporciona herramientas para definir modelos y administrar bases de datos localmente, en este proyecto se optó por externalizar la gestión de datos, accediendo a ellos mediante llamadas HTTP a la API de Supabase.
+El backend de ESGame fue desarrollado utilizando el framework Django, y se encarga de gestionar la lógica de negocio, la autenticación de usuarios y la comunicación con la base de datos alojada en Supabase. A pesar de que Django proporciona herramientas para definir modelos y administrar bases de datos localmente, en este proyecto se optó por externalizar la gestión de datos, accediendo a ellos mediante llamadas HTTP a la API de Supabase.
 
 El sistema se organiza en una aplicación modular denominada ESGames, que agrupa las vistas (views.py), rutas (urls.py) y serializadores (serializers.py) necesarios para el manejo de las operaciones de negocio. Las vistas están implementadas como clases basadas en Django REST Framework [3], lo que permite estructurar de forma clara los distintos endpoints y aplicar control de acceso según el tipo de usuario.\\
 
@@ -111,7 +111,7 @@ El sistema de rutas se gestiona mediante Vue Router, y el estado de sesión del 
 
 La comunicación con la API se realiza mediante Axios, centralizada en módulos como api.js y videogames.js, lo que permite desacoplar la lógica de negocio del consumo de datos. El estilo general se define en style.css y se aplica mediante clases y estilos scoped en los componentes.
 \subsection{Base de Datos y Entidades}
-La base de datos utilizada en GameStore está alojada en Supabase, una plataforma de desarrollo backend como servicio que proporciona una base de datos PostgreSQL completamente gestionada en la nube. Supabase permite definir tablas, relaciones y políticas de acceso mediante una interfaz gráfica, además de generar automáticamente una API REST para cada entidad del sistema [5].
+La base de datos utilizada en ESGame está alojada en Supabase, una plataforma de desarrollo backend como servicio que proporciona una base de datos PostgreSQL completamente gestionada en la nube. Supabase permite definir tablas, relaciones y políticas de acceso mediante una interfaz gráfica, además de generar automáticamente una API REST para cada entidad del sistema [5].
 
 Aunque el backend del sistema fue desarrollado con Django, la lógica de persistencia no se maneja mediante el ORM tradicional, sino que se conecta directamente con Supabase a través de la API proporcionada por esta plataforma. Esto permite separar la gestión de datos del entorno del servidor, facilitando la escalabilidad y la implementación en producción.	\\
 
@@ -137,34 +137,72 @@ Las operaciones de lectura y escritura se realizan a través de peticiones HTTP 
 
 \begin{figure}[htbp]
 	\centerline{\includegraphics[width=3in]{vista.png}}
-	\caption{Example of a figure caption.}
+	\caption{Pagina de Inicio}
 	\label{fig}
 \end{figure}
 
 \begin{figure}[htbp]
 	\centerline{\includegraphics[width=3in]{register.png}}
-	\caption{Example of a figure caption.}
+	\caption{Registro de Usuario}
 	\label{fig}
 \end{figure}
 
 \begin{figure}[htbp]
 	\centerline{\includegraphics[width=3in]{login.png}}
-	\caption{Example of a figure caption.}
+	\caption{Usuario Registrado}
 	\label{fig}
 \end{figure}
 
 \begin{figure}[htbp]
 	\centerline{\includegraphics[width=3in]{categories.png}}
-	\caption{Example of a figure caption.}
+	\caption{Categorias}
 	\label{fig}
 \end{figure}
 
 \begin{figure}[htbp]
 	\centerline{\includegraphics[width=3in]{cart.png}}
-	\caption{Example of a figure caption.}
+	\caption{Carro de compra}
 	\label{fig}
 \end{figure}
 
+\begin{figure}[htbp]
+	\centerline{\includegraphics[width=2in]{boleta.png}}
+	\caption{boleta en .pdf}
+	\label{fig}
+\end{figure}
+
+\begin{figure}[htbp]
+	\centerline{\includegraphics[width=3in]{librari.png}}
+	\caption{Libreria}
+	\label{fig}
+\end{figure}
+
+\begin{figure}[htbp]
+	\centerline{\includegraphics[width=3in]{profile.png}}
+	\caption{Perfil de Usuario}
+	\label{fig}
+\end{figure}
+
+\begin{figure}[htbp]
+	\centerline{\includegraphics[width=3in]{detail.png}}
+	\caption{Detalle del juego}
+	\label{fig}
+\end{figure}
+
+\section{Concluciones}
+El desarrollo de ESGame permitió demostrar la viabilidad de construir una tienda digital de videojuegos utilizando tecnologías modernas basadas en arquitectura cliente-servidor. El uso combinado de Django como backend para la gestión de lógica de negocio y Vue.js para la construcción de una interfaz responsiva facilitó la creación de una experiencia de usuario fluida y estructurada.
+
+La integración con Supabase como servicio externo para la gestión de datos introdujo una capa de desacoplamiento que mejora la escalabilidad del sistema y reduce la complejidad de mantenimiento del backend. Esta decisión permitió centralizar la lógica de control en el servidor sin necesidad de utilizar un ORM propio, apoyándose en una base de datos en la nube con capacidades de autenticación y API REST integradas.
+
+Entre las funcionalidades implementadas destacan la autenticación de usuarios, la navegación por catálogo, el sistema de carrito y compras simuladas mediante saldo virtual, así como módulos complementarios como biblioteca de juegos, favoritos y valoraciones. La implementación modular y reutilizable del código facilita su expansión futura.
+
+Finalmente, ESGame constituye un ejemplo funcional de cómo integrar frameworks web con servicios backend como Supabase para desarrollar soluciones orientadas al comercio digital. El sistema puede extenderse incorporando nuevas funciones como pasarelas de pago reales, dashboards administrativos o despliegue en servicios cloud para entornos de producción.
+
+\section*{Anexos}
+
+Página web: https://esgamesproject.netlify.app/\\
+
+Repositorio GitHub: https://github.com/RodrigoFFN/Proyec\\to\_Final\_gameStore.git
 
 \begin{thebibliography}{00}
 \bibitem{b1} Django Software Foundation, “Django,” https://www.djangoproject.com/, Accedido: 24-jul-2025.
@@ -173,11 +211,7 @@ Las operaciones de lectura y escritura se realizan a través de peticiones HTTP 
 \bibitem{b4} M. Stojanovic, “What is a Single Page Application (SPA)?,” Telerik, 2023. [En línea]. Disponible: https://www.telerik.com/blogs/what-is-a-single-page-application
 \bibitem{b5} Supabase, “The Open Source Firebase Alternative,” https://supabase.com/, Accedido: 24-jul-2025.
 
-\bibitem{b6} .
-\bibitem{b7} .
 \end{thebibliography}
-\vspace{12pt}
-\color{red}
-IEEE conference templates contain guidance text for composing and formatting conference papers. Please ensure that all template text is removed from your conference paper prior to submission to the conference. Failure to remove the template text from your paper may result in your paper not being published.
+
 
 \end{document}
