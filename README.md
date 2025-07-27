@@ -13,13 +13,20 @@ ESGames✨
 -Rodrigo Francisco Flores Nuñez
 
 Backend:
+
 Enlaze: https://gamestore-backend-g1xi.onrender.com/
+
 Usuario:admin
+
 contraseña:admin
 
+
 Front end:
+
 Enlaze: https://esgamesproject.netlify.app/
+
 Usuario: front4862
+
 contraseña: front4862
 
 <p align="center">
